@@ -191,14 +191,15 @@
     }
     .greeting {
       flex:1; display:flex; align-items:center; justify-content:center;
-      margin-top:-6vh;
+      padding:0 24px;
     }
     .greeting-text {
       margin:0; font-size:44px; font-weight:700; color:#1c1c1e; letter-spacing:-.5px;
+      text-align:center;
     }
     .bottom-bar {
       display:flex; justify-content:center; align-items:center; gap:12px;
-      padding-bottom:calc(28px + var(--safe-bottom));
+      padding-bottom:calc(32px + var(--safe-bottom));
       animation:tileIn .65s cubic-bezier(.22,.8,.24,1) .12s both;
     }
     @keyframes tileIn {
@@ -227,8 +228,8 @@
 
     .passcode {
       position:absolute; inset:0; z-index:3;
-      display:flex; flex-direction:column; align-items:center;
-      box-sizing:border-box; padding:12vh 0 5vh;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      box-sizing:border-box; padding:calc(20px + var(--safe-top)) 20px calc(12px + var(--safe-bottom));
       opacity:0; visibility:hidden; pointer-events:none;
       transform:translateY(28px) scale(.97);
       transition:opacity .42s cubic-bezier(.22,.8,.24,1), transform .5s cubic-bezier(.22,.8,.24,1), visibility 0s linear .42s;
@@ -239,10 +240,10 @@
       transition:opacity .42s cubic-bezier(.22,.8,.24,1), transform .5s cubic-bezier(.22,.8,.24,1), visibility 0s;
     }
     .passcode-title {
-      margin:0 0 8vh; text-align:center; font-size:26px; font-weight:600; color:#1c1c1e;
+      margin:0 0 28px; text-align:center; font-size:26px; font-weight:600; color:#1c1c1e;
     }
     .pin-dots {
-      display:flex; justify-content:center; gap:14px; margin-bottom:6vh;
+      display:flex; justify-content:center; gap:14px; margin-bottom:36px;
     }
     .pin-dots i, .pin-dots .dot {
       width:12px; height:12px; border-radius:50%;
@@ -257,9 +258,9 @@
       0%,100%{transform:translateX(0)} 20%{transform:translateX(-10px)} 40%{transform:translateX(10px)} 60%{transform:translateX(-6px)} 80%{transform:translateX(6px)}
     }
     .keypad {
-      flex:1; display:grid; grid-template-columns:repeat(3,1fr);
-      gap:22px 0; justify-items:center; align-content:start;
-      max-width:340px; margin:0 auto; width:100%;
+      flex:none; display:grid; grid-template-columns:repeat(3,1fr);
+      gap:18px 0; justify-items:center; align-content:center;
+      max-width:320px; margin:0 auto; width:100%;
     }
     .key {
       width:74px; height:74px; border-radius:50%; border:0;
@@ -273,7 +274,7 @@
     .key svg { display:block; }
     .forgot {
       text-align:center; font-size:15px; font-weight:500; color:#1c1c1e;
-      margin-top:4vh; margin-bottom:calc(8px + var(--safe-bottom));
+      margin-top:28px; margin-bottom:0;
       border:0; background:none; cursor:pointer; padding:10px;
     }
 
@@ -284,15 +285,16 @@
       transform:scale(.96);
       transition:opacity .5s cubic-bezier(.22,.8,.24,1), transform .55s cubic-bezier(.22,.8,.24,1), visibility 0s linear .5s;
       padding-top:var(--safe-top);
+      overflow:hidden;
     }
     .app.show {
       opacity:1; visibility:visible; pointer-events:auto;
       transform:scale(1);
       transition:opacity .5s cubic-bezier(.22,.8,.24,1), transform .55s cubic-bezier(.22,.8,.24,1), visibility 0s;
     }
-    main { position:relative; z-index:1; height:100%; overflow:auto; padding:44px 22px 105px; scrollbar-width:none; overscroll-behavior:contain; }
+    main { position:relative; z-index:1; height:100%; overflow:auto; padding:28px 22px 110px; scrollbar-width:none; overscroll-behavior:contain; }
     main::-webkit-scrollbar { display:none; }
-    h1 { font-size:32px; letter-spacing:-1.4px; line-height:1; margin:0 0 28px; font-weight:400; }
+    h1 { font-size:32px; letter-spacing:-1.4px; line-height:1; margin:0 0 20px; font-weight:400; text-align:left; }
     .search {
       height:52px; border-radius:27px; padding:0 18px; background:rgba(255,255,255,.92);
       display:flex; align-items:center; gap:11px; color:#989898; font-size:16px; margin-bottom:20px;
@@ -332,13 +334,14 @@
     /* —— Дія.AI —— */
     .ai-view {
       display:none; flex-direction:column; height:100%;
+      width:100%; max-width:480px; margin:0 auto;
       padding:0 0 calc(88px + env(safe-area-inset-bottom, 0px));
       position:relative; z-index:1; overflow:hidden;
     }
     .ai-view.on { display:flex; }
     .ai-top {
       display:flex; align-items:center; justify-content:space-between;
-      padding:calc(10px + var(--safe-top)) 18px 10px;
+      padding:8px 18px 8px; flex:none;
     }
     .ai-top button {
       width:40px; height:40px; border:0; background:none; padding:0;
@@ -362,8 +365,8 @@
       100% { transform:translateX(-100%); }
     }
     .ai-chat {
-      flex:1; overflow:auto; padding:18px 18px 12px;
-      scrollbar-width:none;
+      flex:1; overflow:auto; padding:16px 20px 12px;
+      scrollbar-width:none; width:100%;
     }
     .ai-chat::-webkit-scrollbar { display:none; }
     .ai-day {
@@ -408,7 +411,7 @@
     }
     .ai-chip:active { transform:scale(.98); }
     .ai-input-wrap {
-      padding:8px 16px 10px;
+      padding:8px 20px 12px; width:100%; box-sizing:border-box;
     }
     .ai-input {
       display:flex; align-items:center; gap:10px;
@@ -426,62 +429,92 @@
     }
     .ai-input input::placeholder { color:#8a8a8a; }
 
-    .doc { display:none; padding:44px 0 105px; } .doc h1 { margin:0 22px 22px; }
-    .doc-track { display:flex; gap:14px; overflow-x:auto; padding:0 22px 12px; scroll-snap-type:x mandatory; scrollbar-width:none; }
+    .doc {
+      display:none; padding:20px 0 100px !important;
+      overflow-x:hidden; overflow-y:auto;
+    }
+    .doc h1 { margin:0 22px 14px; }
+    .doc-track {
+      display:flex; gap:14px; overflow-x:auto; overflow-y:visible;
+      padding:20px 22px 28px; scroll-snap-type:x mandatory; scrollbar-width:none;
+      scroll-padding-inline:22px; -webkit-overflow-scrolling:touch;
+    }
     .doc-track::-webkit-scrollbar { display:none; }
     .document {
-      scroll-snap-align:center; flex:0 0 calc(100% - 40px); min-height:442px; padding:0; border:0;
+      scroll-snap-align:center; flex:0 0 calc(100% - 28px); min-height:420px; padding:0; border:0;
       background:none!important; box-shadow:none; overflow:visible; perspective:1100px; cursor:pointer; position:relative;
+      margin-top:4px;
     }
-    .doc-inner { position:relative; width:100%; height:442px; transform-style:preserve-3d; transition:transform .65s cubic-bezier(.2,.7,.2,1); }
+    .doc-inner {
+      position:relative; width:100%; height:420px; transform-style:preserve-3d;
+      transition:transform .65s cubic-bezier(.2,.7,.2,1);
+      filter:drop-shadow(0 14px 28px rgba(40,70,90,.16));
+    }
     .document.flipped .doc-inner { transform:rotateY(180deg); }
     .doc-face {
-      position:absolute; inset:0; padding:25px; border-radius:30px; border:1px solid rgba(255,255,255,.55);
-      box-shadow:0 16px 32px rgba(56,87,105,.12); backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:hidden;
+      position:absolute; inset:0; padding:22px; border-radius:28px; border:1px solid rgba(255,255,255,.6);
+      box-shadow:0 10px 28px rgba(56,87,105,.14); backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:hidden;
     }
-    .doc-front { background:linear-gradient(135deg,rgba(255,235,246,.94),rgba(239,244,255,.87)); }
-    .tax .doc-front { background:linear-gradient(135deg,rgba(213,246,224,.94),rgba(214,231,255,.87)); }
-    .driver .doc-front { background:linear-gradient(135deg,rgba(255,237,204,.94),rgba(222,228,255,.84)); }
+    .doc-front {
+      background:
+        radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,.55) 0%, transparent 55%),
+        linear-gradient(145deg, rgba(255,236,248,.97), rgba(232,242,255,.92) 48%, rgba(210,236,248,.9));
+    }
+    .tax .doc-front {
+      background:
+        radial-gradient(120% 80% at 100% 0%, rgba(255,255,255,.5) 0%, transparent 50%),
+        linear-gradient(145deg, rgba(210,248,228,.97), rgba(220,238,255,.92));
+    }
+    .driver .doc-front {
+      background:
+        radial-gradient(120% 80% at 0% 100%, rgba(255,255,255,.45) 0%, transparent 50%),
+        linear-gradient(145deg, rgba(255,240,210,.97), rgba(226,232,255,.9));
+    }
     .doc-back {
-      background:rgba(255,255,255,.96); transform:rotateY(180deg);
+      background:rgba(255,255,255,.97); transform:rotateY(180deg);
       display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
     }
-    .doc-back p { margin:0; font-size:13px; color:#555; }
-    .qr-image { width:235px; height:235px; image-rendering:pixelated; }
-    .document h2 { margin:0 0 22px; font-size:23px; line-height:1.12; letter-spacing:-.7px; max-width:260px; font-weight:400; }
-    .identity { display:flex; gap:17px; align-items:start; }
+    .doc-back p { margin:0; font-size:13px; color:#555; text-align:center; }
+    .qr-image { width:220px; height:220px; image-rendering:pixelated; }
+    .document h2 { margin:0 0 18px; font-size:22px; line-height:1.12; letter-spacing:-.7px; max-width:260px; font-weight:400; }
+    .identity { display:flex; gap:16px; align-items:start; }
     .photo {
-      width:112px; height:142px; flex:none; background:linear-gradient(150deg,#d5b69b,#44352e);
-      border-radius:19px; display:grid; place-items:end center; color:white; font-size:30px; font-weight:400; padding-bottom:13px;
+      width:108px; height:136px; flex:none; background:linear-gradient(150deg,#d5b69b,#44352e);
+      border-radius:18px; display:grid; place-items:center; color:white; font-size:28px; font-weight:400;
+      overflow:hidden; background-size:cover; background-position:center;
     }
+    .photo img { width:100%; height:100%; object-fit:cover; display:block; }
     .fields { font-size:14px; line-height:1.35; }
     .fields b { display:block; margin:0 0 2px; font-weight:400; }
-    .fields div { margin-bottom:16px; }
-    .owner { position:absolute; left:25px; bottom:30px; font-size:20px; line-height:1.1; font-weight:400; letter-spacing:-.45px; max-width:76%; }
+    .fields div { margin-bottom:14px; }
+    .owner { position:absolute; left:22px; bottom:28px; font-size:19px; line-height:1.1; font-weight:400; letter-spacing:-.45px; max-width:76%; }
     .doc-strip {
-      position:absolute; left:0; right:0; bottom:104px; padding:7px 12px;
+      position:absolute; left:0; right:0; bottom:100px; padding:7px 12px;
       background:linear-gradient(90deg,#a9e99e,#9adbed); white-space:nowrap; font-size:11px; font-weight:400; overflow:hidden;
     }
-    .doc-number { position:absolute; left:25px; bottom:17px; font-size:17px; font-weight:400; letter-spacing:.2px; }
+    .doc-number { position:absolute; left:22px; bottom:16px; font-size:17px; font-weight:400; letter-spacing:.2px; }
     .more {
-      position:absolute; width:33px; height:33px; right:19px; bottom:18px; border:0; border-radius:50%;
+      position:absolute; width:33px; height:33px; right:16px; bottom:16px; border:0; border-radius:50%;
       background:#000; color:#fff; font-size:15px; letter-spacing:0; padding:0; display:grid; place-items:center; line-height:1; overflow:hidden;
     }
-    .doc-dots { display:flex; justify-content:center; gap:8px; margin-top:8px; }
+    .doc-dots { display:flex; justify-content:center; gap:8px; margin-top:4px; padding-bottom:4px; }
     .doc-dots i { width:8px; height:8px; background:rgba(255,255,255,.52); border-radius:50%; transition:.2s; }
     .doc-dots i.active { background:#fff; transform:scale(1.15); }
     .document.action {
-      display:grid; place-items:center; min-height:442px; padding:25px;
-      border:1px solid rgba(255,255,255,.55); border-radius:30px;
-      background:linear-gradient(135deg,rgba(245,252,255,.78),rgba(224,241,233,.78))!important;
-      box-shadow:0 16px 32px rgba(56,87,105,.12); text-align:center; cursor:pointer;
+      display:grid; place-items:center; min-height:420px; padding:25px;
+      border:1px solid rgba(255,255,255,.55); border-radius:28px;
+      background:
+        radial-gradient(100% 80% at 50% 0%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(145deg, rgba(245,252,255,.88), rgba(224,241,233,.86))!important;
+      box-shadow:0 14px 28px rgba(56,87,105,.14); text-align:center; cursor:pointer;
+      filter:none;
     }
     .document.action > div { display:flex; flex-direction:column; align-items:center; gap:8px; }
     .document.action svg { width:42px; height:42px; stroke:currentColor; fill:none; stroke-width:1.7; }
     .document.action strong { font-size:20px; font-weight:400; }
     .document.action span { font-size:13px; color:#525252; }
 
-    .feed,.menu-view { display:none; padding-top:44px; }
+    .feed,.menu-view { display:none; padding-top:28px; }
     .feed h1,.menu-view h1 { margin-bottom:12px; }
     .feed h2 { font-size:18px; font-weight:400; margin:35px 0 17px; }
     .message-card,.resilience,.menu-card {
@@ -568,7 +601,9 @@
     .info-photo {
       width:128px; height:172px; flex:none; border-radius:20px;
       background:linear-gradient(150deg,#b79778,#493932); display:grid; place-items:center; color:#fff; font-size:38px;
+      overflow:hidden; background-size:cover; background-position:center;
     }
+    .info-photo img { width:100%; height:100%; object-fit:cover; display:block; }
     .info-birth { font-size:16px; line-height:1.25; }
     .info-birth span { display:block; color:#777; margin:8px 0; }
     .info-lines { display:grid; grid-template-columns:1fr 1fr; row-gap:25px; font-size:15px; }
@@ -580,6 +615,47 @@
     .copy svg { width:18px; height:18px; stroke:#111; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
     .info-address { font-size:16px; line-height:1.45; }
 
+    .profile-edit {
+      position:absolute; inset:0; z-index:50; display:none; align-items:flex-end; justify-content:center;
+      padding:18px 18px calc(24px + var(--safe-bottom));
+      background:rgba(12,20,28,.38); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    }
+    .profile-edit.show { display:flex; }
+    .profile-panel {
+      width:100%; max-width:420px; background:#fff; border-radius:28px; padding:22px 20px 18px;
+      box-shadow:0 20px 50px rgba(0,0,0,.22); max-height:min(88vh,640px); overflow:auto;
+    }
+    .profile-panel h3 { margin:0 0 6px; font-size:22px; font-weight:600; text-align:center; }
+    .profile-hint { margin:0 0 18px; text-align:center; font-size:13px; color:#777; }
+    .profile-preview {
+      width:96px; height:120px; margin:0 auto 18px; border-radius:16px; overflow:hidden;
+      background:linear-gradient(150deg,#d5b69b,#44352e); display:grid; place-items:center;
+      color:#fff; font-size:28px; background-size:cover; background-position:center;
+    }
+    .profile-preview img { width:100%; height:100%; object-fit:cover; }
+    .profile-field { margin-bottom:12px; }
+    .profile-field label { display:block; font-size:12px; color:#777; margin-bottom:6px; }
+    .profile-field input {
+      width:100%; height:48px; border-radius:14px; border:1px solid #e2e6ea; padding:0 14px;
+      font:inherit; font-size:16px; background:#f7f8fa; outline:none;
+    }
+    .profile-field input:focus { border-color:#9adbed; background:#fff; }
+    .profile-photo-row { display:flex; gap:10px; }
+    .profile-photo-row label.file-btn {
+      flex:1; height:48px; border-radius:14px; background:#111; color:#fff;
+      display:grid; place-items:center; font-size:15px; cursor:pointer; margin:0;
+    }
+    .profile-photo-row input[type=file] { display:none; }
+    .profile-photo-row button.clear-photo {
+      height:48px; padding:0 14px; border:0; border-radius:14px; background:#eee; font:inherit; cursor:pointer;
+    }
+    .profile-actions { display:flex; gap:10px; margin-top:16px; }
+    .profile-actions button {
+      flex:1; height:50px; border:0; border-radius:25px; font:inherit; font-size:16px; cursor:pointer;
+    }
+    .profile-actions .cancel { background:#eceff1; color:#111; }
+    .profile-actions .save { background:#111; color:#fff; }
+
     @media (max-width:390px) {
       main { padding-left:18px; padding-right:18px; }
       h1 { font-size:30px; }
@@ -587,6 +663,7 @@
       .key { width:68px; height:68px; font-size:28px; }
       .greeting-text { font-size:38px; }
       .passcode-title { font-size:22px; }
+      .document { flex:0 0 calc(100% - 20px); }
     }
   </style>
 </head>
@@ -682,14 +759,14 @@
               <div class="doc-face doc-front">
                 <h2>Паспорт громадянина України</h2>
                 <div class="identity">
-                  <div class="photo">НО</div>
+                  <div class="photo" data-triple-edit>НО</div>
                   <div class="fields">
-                    <div><b>Дата народження:</b>29.01.2008</div>
+                    <div><b>Дата народження:</b><span data-birth>29.01.2008</span></div>
                     <div><b>Номер:</b>010509676</div>
                   </div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
-                <div class="owner">НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
+                <div class="owner" data-triple-edit data-owner>НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
@@ -704,8 +781,8 @@
                 <h2>Картка платника податків</h2>
                 <div class="fields">
                   <div><b>РНОКПП</b></div>
-                  <div>Носенко<br>Олександр<br>Володимирович</div>
-                  <div><b>Дата народження:</b>29.01.2008</div>
+                  <div data-name-block>Носенко<br>Олександр<br>Володимирович</div>
+                  <div><b>Дата народження:</b><span data-birth>29.01.2008</span></div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
                 <div class="doc-number">4008415271</div>
@@ -722,14 +799,14 @@
               <div class="doc-face doc-front">
                 <h2>Посвідчення водія</h2>
                 <div class="identity">
-                  <div class="photo">НО</div>
+                  <div class="photo" data-triple-edit>НО</div>
                   <div class="fields">
                     <div><b>Категорії:</b>B, B1</div>
                     <div><b>Дійсне до:</b>21.06.2033</div>
                   </div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
-                <div class="owner">НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
+                <div class="owner" data-triple-edit data-owner>НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
@@ -750,7 +827,7 @@
       </main>
 
       <main class="feed" id="feedView">
-        <h1>Привіт, Олександр</h1>
+        <h1 data-triple-edit data-feed-hello>Привіт, Олександр</h1>
         <h2>Нові повідомлення</h2>
         <article class="message-card">
           <small>Опитування</small>
@@ -855,11 +932,11 @@
         </div>
         <div class="info-strip">Документ діє під час воєнного стану</div>
         <article class="info-card">
-          <div class="info-name">НОСЕНКО ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
-          <div class="latin">Nosenko Oleksandr</div>
+          <div class="info-name" data-info-name>НОСЕНКО ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
+          <div class="latin" data-latin>Nosenko Oleksandr</div>
           <div class="info-ident">
-            <div class="info-photo">НО</div>
-            <div class="info-birth">Дата<br>народження:<span>Date of birth</span>29.01.2008</div>
+            <div class="info-photo" data-triple-edit>НО</div>
+            <div class="info-birth">Дата<br>народження:<span>Date of birth</span><span data-birth>29.01.2008</span></div>
           </div>
         </article>
         <article class="info-card info-lines">
@@ -939,6 +1016,41 @@
       </nav>
       <div class="notice" id="notice"></div>
     </div>
+
+    <div class="profile-edit" id="profileEdit" aria-hidden="true">
+      <div class="profile-panel" role="dialog" aria-label="Редагувати профіль">
+        <h3>Редагувати дані</h3>
+        <p class="profile-hint">Потрійний тап по фото / імені · лише для демо</p>
+        <div class="profile-preview" id="profilePreview">НО</div>
+        <div class="profile-field">
+          <label>Прізвище</label>
+          <input id="editLast" type="text" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <label>Ім'я</label>
+          <input id="editFirst" type="text" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <label>По батькові</label>
+          <input id="editMiddle" type="text" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <label>Дата народження (ДД.ММ.РРРР)</label>
+          <input id="editBirth" type="text" inputmode="numeric" placeholder="29.01.2008" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <label>Фото</label>
+          <div class="profile-photo-row">
+            <label class="file-btn">Обрати фото<input id="editPhoto" type="file" accept="image/*" /></label>
+            <button class="clear-photo" id="clearPhoto" type="button">Скинути</button>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="cancel" id="cancelProfile" type="button">Скасувати</button>
+          <button class="save" id="saveProfile" type="button">Зберегти</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <script>
@@ -963,11 +1075,15 @@
       document.addEventListener('touchmove',e=>{ if(e.touches.length>1) e.preventDefault(); },{passive:false});
       let lastTouchEnd=0;
       document.addEventListener('touchend',e=>{
+        if(e.target.closest('[data-triple-edit], .profile-edit, .profile-panel')) return;
         const now=Date.now();
         if(now-lastTouchEnd<=320) e.preventDefault();
         lastTouchEnd=now;
       },{passive:false});
-      document.addEventListener('dblclick',e=>e.preventDefault());
+      document.addEventListener('dblclick',e=>{
+        if(e.target.closest('[data-triple-edit], .profile-edit')) return;
+        e.preventDefault();
+      });
 
       const phone=document.getElementById('phone');
       const splash=document.getElementById('splash');
@@ -1098,7 +1214,10 @@
       });
       docDots.forEach((dot,index)=>dot.addEventListener('click',()=>setDoc(index)));
       document.querySelectorAll('.document:not(.action)').forEach(card=>{
-        card.addEventListener('click',()=>card.classList.toggle('flipped'));
+        card.addEventListener('click',e=>{
+          if(e.target.closest('[data-triple-edit], .more')) return;
+          card.classList.toggle('flipped');
+        });
       });
 
       const sheet=document.getElementById('sheetOverlay');
@@ -1225,6 +1344,158 @@
         input.blur();
         aiReply(q);
       };
+
+      // —— Профіль: потрійний тап → змінити ім'я / вік / фото ——
+      const DEFAULT_PROFILE={
+        last:'Носенко', first:'Олександр', middle:'Володимирович',
+        birth:'29.01.2008', photo:''
+      };
+      let profile;
+      try {
+        profile=Object.assign({}, DEFAULT_PROFILE, JSON.parse(localStorage.getItem('fakedia_profile')||'{}'));
+      } catch(_){ profile=Object.assign({}, DEFAULT_PROFILE); }
+      let draftPhoto=profile.photo||'';
+
+      function initialsOf(p){
+        const a=(p.last||'?')[0]||'';
+        const b=(p.first||'?')[0]||'';
+        return (a+b).toUpperCase();
+      }
+      function upperName(p){
+        return [p.last,p.first,p.middle].map(s=>(s||'').toUpperCase());
+      }
+      function titleCase(s){
+        s=(s||'').trim();
+        if(!s) return '';
+        return s.charAt(0).toUpperCase()+s.slice(1).toLowerCase();
+      }
+      function latinize(s){
+        const map={а:'a',б:'b',в:'v',г:'h',ґ:'g',д:'d',е:'e',є:'ye',ж:'zh',з:'z',и:'y',і:'i',ї:'yi',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'kh',ц:'ts',ч:'ch',ш:'sh',щ:'shch',ь:'',ю:'yu',я:'ya',"'":'','’':''};
+        return (s||'').toLowerCase().split('').map(c=>map[c]!==undefined?map[c]:c).join('');
+      }
+      function setPhotoEl(el, p){
+        if(!el) return;
+        if(p.photo){
+          el.innerHTML='<img alt="" src="'+p.photo+'"/>';
+          el.style.backgroundImage='none';
+        } else {
+          el.textContent=initialsOf(p);
+          el.style.backgroundImage='';
+        }
+      }
+      function applyProfile(){
+        const u=upperName(profile);
+        const tc=[titleCase(profile.last), titleCase(profile.first), titleCase(profile.middle)];
+        document.querySelectorAll('[data-owner]').forEach(el=>{
+          el.innerHTML=u[0]+'<br>'+u[1]+'<br>'+u[2];
+        });
+        document.querySelectorAll('[data-name-block]').forEach(el=>{
+          el.innerHTML=tc[0]+'<br>'+tc[1]+'<br>'+tc[2];
+        });
+        document.querySelectorAll('[data-birth]').forEach(el=>{ el.textContent=profile.birth; });
+        document.querySelectorAll('.photo, .info-photo').forEach(el=>setPhotoEl(el, profile));
+        document.querySelectorAll('[data-feed-hello]').forEach(el=>{
+          el.textContent='Привіт, '+titleCase(profile.first);
+        });
+        document.querySelectorAll('[data-info-name]').forEach(el=>{
+          el.innerHTML=u[0]+' '+u[1]+'<br>'+u[2];
+        });
+        document.querySelectorAll('[data-latin]').forEach(el=>{
+          const L=titleCase(latinize(profile.last));
+          const F=titleCase(latinize(profile.first));
+          el.textContent=L+' '+F;
+        });
+        // QR refresh with new birth
+        document.querySelectorAll('.qr-image').forEach((img,i)=>{
+          const payloads=[
+            'eDocument%3A010509676%3A4008415271%3A'+encodeURIComponent(profile.birth),
+            'Taxpayer%3A4008415271%3A'+encodeURIComponent(profile.birth),
+            'DriverLicense%3AB%2CB1%3A21.06.2033'
+          ];
+          if(payloads[i]) img.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+payloads[i];
+        });
+      }
+
+      const profileEdit=document.getElementById('profileEdit');
+      const profilePreview=document.getElementById('profilePreview');
+      function fillEditor(){
+        document.getElementById('editLast').value=profile.last;
+        document.getElementById('editFirst').value=profile.first;
+        document.getElementById('editMiddle').value=profile.middle;
+        document.getElementById('editBirth').value=profile.birth;
+        draftPhoto=profile.photo||'';
+        setPhotoEl(profilePreview, {last:profile.last,first:profile.first,photo:draftPhoto});
+      }
+      function openProfileEdit(){
+        fillEditor();
+        profileEdit.classList.add('show');
+        profileEdit.setAttribute('aria-hidden','false');
+      }
+      function closeProfileEdit(){
+        profileEdit.classList.remove('show');
+        profileEdit.setAttribute('aria-hidden','true');
+      }
+
+      // triple tap detector
+      const tapMap=new WeakMap();
+      function bindTriple(el){
+        el.addEventListener('pointerup',e=>{
+          if(e.pointerType==='mouse' && e.button!==0) return;
+          const now=Date.now();
+          let st=tapMap.get(el)||{n:0,t:0};
+          if(now-st.t>520) st={n:0,t:now};
+          st.n+=1; st.t=now; tapMap.set(el,st);
+          if(st.n>=3){
+            tapMap.set(el,{n:0,t:0});
+            e.preventDefault(); e.stopPropagation();
+            openProfileEdit();
+          }
+        });
+      }
+      document.querySelectorAll('[data-triple-edit]').forEach(bindTriple);
+
+      document.getElementById('editPhoto').onchange=e=>{
+        const file=e.target.files&&e.target.files[0];
+        if(!file) return;
+        const reader=new FileReader();
+        reader.onload=()=>{
+          draftPhoto=String(reader.result||'');
+          setPhotoEl(profilePreview,{last:document.getElementById('editLast').value,first:document.getElementById('editFirst').value,photo:draftPhoto});
+        };
+        reader.readAsDataURL(file);
+      };
+      document.getElementById('clearPhoto').onclick=()=>{
+        draftPhoto='';
+        document.getElementById('editPhoto').value='';
+        setPhotoEl(profilePreview,{last:document.getElementById('editLast').value,first:document.getElementById('editFirst').value,photo:''});
+      };
+      ['editLast','editFirst'].forEach(id=>{
+        document.getElementById(id).addEventListener('input',()=>{
+          if(draftPhoto) return;
+          setPhotoEl(profilePreview,{last:document.getElementById('editLast').value,first:document.getElementById('editFirst').value,photo:''});
+        });
+      });
+      document.getElementById('cancelProfile').onclick=closeProfileEdit;
+      profileEdit.addEventListener('click',e=>{ if(e.target===profileEdit) closeProfileEdit(); });
+      document.getElementById('saveProfile').onclick=()=>{
+        const birth=(document.getElementById('editBirth').value||'').trim();
+        if(birth && !/^\d{2}\.\d{2}\.\d{4}$/.test(birth)){
+          notice('Дата у форматі ДД.ММ.РРРР');
+          return;
+        }
+        profile={
+          last:(document.getElementById('editLast').value||'').trim()||DEFAULT_PROFILE.last,
+          first:(document.getElementById('editFirst').value||'').trim()||DEFAULT_PROFILE.first,
+          middle:(document.getElementById('editMiddle').value||'').trim()||DEFAULT_PROFILE.middle,
+          birth:birth||DEFAULT_PROFILE.birth,
+          photo:draftPhoto||''
+        };
+        try { localStorage.setItem('fakedia_profile', JSON.stringify(profile)); } catch(_){}
+        applyProfile();
+        closeProfileEdit();
+        notice('Дані оновлено');
+      };
+      applyProfile();
     })();
   </script>
   <script>

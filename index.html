@@ -7,19 +7,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Дія" />
-  <meta name="theme-color" content="#6ec9c4" />
+  <meta name="theme-color" content="#c5d9e8" />
   <link rel="manifest" href="manifest.json" />
   <title>Моя держава — демо</title>
   <style>
     @import url('https://db.onlinewebfonts.com/c/a44207bfe4040f536c824dbbf82f5ed1?family=e-Ukraine+Regular');
     :root {
       --ink:#080808; --muted:#777; --card:rgba(255,255,255,.56); --line:rgba(255,255,255,.45);
-      --bg:#6ec9c4;
+      --bg:#c5d9e8;
       --safe-top:env(safe-area-inset-top, 0px);
       --safe-bottom:env(safe-area-inset-bottom, 0px);
     }
     * { box-sizing:border-box; touch-action:manipulation; }
-    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#6ec9c4; }
+    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#c5d9e8; }
     body {
       min-height:100%; min-height:100dvh; display:grid; place-items:center;
       font-family:"e-Ukraine Regular",-apple-system,BlinkMacSystemFont,"SF Pro Text",ui-sans-serif,system-ui,sans-serif;
@@ -36,7 +36,7 @@
       html {
         height: 100%;
         height: -webkit-fill-available;
-        background: #6ec9c4;
+        background: #c5d9e8;
       }
       body {
         place-items: stretch;
@@ -45,7 +45,7 @@
         min-height: 100%;
         min-height: 100dvh;
         min-height: -webkit-fill-available;
-        background: #6ec9c4;
+        background: #c5d9e8;
       }
       .phone {
         position: fixed !important;
@@ -82,7 +82,7 @@
     }
     .ios-bottom-bleed { display: none; }
     html.native-app, html.native-app body {
-      background: #6ec9c4;
+      background: #c5d9e8;
     }
     html.native-app .phone {
       position: fixed !important;
@@ -99,21 +99,19 @@
     }
     .mesh-wrap {
       position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+      background:linear-gradient(165deg, #b8d4e8 0%, #d4c8e8 42%, #e8e0c8 78%, #d0e4d8 100%);
     }
     .blob {
-      position:absolute; width:80%; height:80%; border-radius:50%;
-      filter:blur(70px); opacity:.95; will-change:transform, opacity;
+      position:absolute; width:75%; height:75%; border-radius:50%;
+      filter:blur(64px); opacity:.9; will-change:transform, opacity;
+      mix-blend-mode:normal;
     }
-    /* teal top → lavender mid → teal/blue bottom (як у Дії) */
-    .b1 { background:#5fd0c0; top:-20%; left:-20%; width:90%; height:70%; animation:breathe1 12s ease-in-out infinite; }
-    .b2 { background:#7ec8dc; top:-10%; right:-25%; width:85%; height:65%; animation:breathe2 16s ease-in-out infinite; }
-    .b3 { background:#d8b8ee; top:30%; left:-15%; width:90%; height:70%; animation:breathe3 14s ease-in-out infinite; }
-    .b4 { background:#c9a8e8; bottom:-10%; right:-10%; width:80%; height:60%; animation:breathe4 18s ease-in-out infinite; }
-    .b5 {
-      position:absolute; width:100%; height:45%; left:0; bottom:0; border-radius:0;
-      background:linear-gradient(180deg, transparent 0%, #6eb8d4 55%, #5aa8c8 100%);
-      filter:blur(40px); opacity:.85; animation:none;
-    }
+    /* soft Diia pastel: mint / sky / lilac / blush */
+    .b1 { background:#9fdcc8; top:-18%; left:-18%; width:85%; height:70%; animation:breathe1 12s ease-in-out infinite; }
+    .b2 { background:#8ec8e0; top:-22%; right:-18%; width:80%; height:68%; animation:breathe2 16s ease-in-out infinite; }
+    .b3 { background:#d4b0e4; top:28%; left:-20%; width:88%; height:72%; animation:breathe3 14s ease-in-out infinite; }
+    .b4 { background:#e8c4d8; bottom:-18%; right:-16%; width:82%; height:65%; animation:breathe4 18s ease-in-out infinite; }
+    .b5 { display:none !important; }
     @keyframes breathe1 {
       0%,100% { transform:translate(0,0) scale(1); opacity:.85; }
       50% { transform:translate(18%,12%) scale(1.2); opacity:1; }
@@ -430,52 +428,65 @@
     .ai-input input::placeholder { color:#8a8a8a; }
 
     .doc {
-      display:none; padding:20px 0 100px !important;
-      overflow-x:hidden; overflow-y:auto;
+      display:none; flex-direction:column;
+      padding:12px 0 calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+      overflow:hidden; height:100%;
     }
-    .doc h1 { margin:0 22px 14px; }
+    .doc h1 { margin:0 22px 8px; flex:none; }
     .doc-track {
-      display:flex; gap:14px; overflow-x:auto; overflow-y:visible;
-      padding:20px 22px 28px; scroll-snap-type:x mandatory; scrollbar-width:none;
+      flex:1; min-height:0;
+      display:flex; align-items:center; gap:14px;
+      overflow-x:auto; overflow-y:hidden;
+      padding:12px 22px 8px; scroll-snap-type:x mandatory; scrollbar-width:none;
       scroll-padding-inline:22px; -webkit-overflow-scrolling:touch;
     }
     .doc-track::-webkit-scrollbar { display:none; }
     .document {
-      scroll-snap-align:center; flex:0 0 calc(100% - 28px); min-height:420px; padding:0; border:0;
-      background:none!important; box-shadow:none; overflow:visible; perspective:1100px; cursor:pointer; position:relative;
-      margin-top:4px;
+      scroll-snap-align:center; flex:0 0 calc(100% - 36px); min-height:0; height:min(460px, 62vh); padding:0; border:0;
+      background:none!important; box-shadow:none; overflow:visible; perspective:1200px; cursor:pointer; position:relative;
     }
     .doc-inner {
-      position:relative; width:100%; height:420px; transform-style:preserve-3d;
+      position:relative; width:100%; height:100%; transform-style:preserve-3d;
       transition:transform .65s cubic-bezier(.2,.7,.2,1);
-      filter:drop-shadow(0 14px 28px rgba(40,70,90,.16));
+      filter:drop-shadow(0 12px 26px rgba(40,60,90,.14));
     }
     .document.flipped .doc-inner { transform:rotateY(180deg); }
     .doc-face {
-      position:absolute; inset:0; padding:22px; border-radius:28px; border:1px solid rgba(255,255,255,.6);
-      box-shadow:0 10px 28px rgba(56,87,105,.14); backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:hidden;
+      position:absolute; inset:0; padding:22px; border-radius:28px;
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 8px 24px rgba(56,87,105,.1);
+      backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:hidden;
+      -webkit-backdrop-filter:blur(28px); backdrop-filter:blur(28px);
     }
     .doc-front {
-      background:
-        radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,.55) 0%, transparent 55%),
-        linear-gradient(145deg, rgba(255,236,248,.97), rgba(232,242,255,.92) 48%, rgba(210,236,248,.9));
+      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,245,252,.62) 45%, rgba(235,245,255,.7));
     }
     .tax .doc-front {
-      background:
-        radial-gradient(120% 80% at 100% 0%, rgba(255,255,255,.5) 0%, transparent 50%),
-        linear-gradient(145deg, rgba(210,248,228,.97), rgba(220,238,255,.92));
+      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(230,250,240,.65) 50%, rgba(230,240,255,.7));
     }
     .driver .doc-front {
-      background:
-        radial-gradient(120% 80% at 0% 100%, rgba(255,255,255,.45) 0%, transparent 50%),
-        linear-gradient(145deg, rgba(255,240,210,.97), rgba(226,232,255,.9));
+      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,245,225,.65) 50%, rgba(235,238,255,.7));
     }
     .doc-back {
-      background:rgba(255,255,255,.97); transform:rotateY(180deg);
-      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+      background:rgba(255,255,255,.88); transform:rotateY(180deg);
+      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px;
     }
-    .doc-back p { margin:0; font-size:13px; color:#555; text-align:center; }
-    .qr-image { width:220px; height:220px; image-rendering:pixelated; }
+    .doc-back p { margin:0; font-size:13px; color:#555; text-align:center; padding:0 16px; }
+    .qr-box {
+      width:220px; height:220px; border-radius:16px; background:#fff;
+      display:grid; place-items:center; overflow:hidden;
+      box-shadow:0 4px 18px rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .qr-box img { width:100%; height:100%; object-fit:contain; display:block; image-rendering:pixelated; }
+    .qr-empty {
+      width:100%; height:100%; display:grid; place-items:center;
+      background:
+        linear-gradient(#eee 1px, transparent 1px) 0 0 / 22px 22px,
+        linear-gradient(90deg, #eee 1px, transparent 1px) 0 0 / 22px 22px,
+        #fafafa;
+      color:#bbb; font-size:15px; font-weight:600; letter-spacing:.4px;
+    }
     .document h2 { margin:0 0 18px; font-size:22px; line-height:1.12; letter-spacing:-.7px; max-width:260px; font-weight:400; }
     .identity { display:flex; gap:16px; align-items:start; }
     .photo {
@@ -497,22 +508,34 @@
       position:absolute; width:33px; height:33px; right:16px; bottom:16px; border:0; border-radius:50%;
       background:#000; color:#fff; font-size:15px; letter-spacing:0; padding:0; display:grid; place-items:center; line-height:1; overflow:hidden;
     }
-    .doc-dots { display:flex; justify-content:center; gap:8px; margin-top:4px; padding-bottom:4px; }
+    .doc-dots { display:flex; justify-content:center; gap:8px; margin:6px 0 4px; flex:none; }
     .doc-dots i { width:8px; height:8px; background:rgba(255,255,255,.52); border-radius:50%; transition:.2s; }
     .doc-dots i.active { background:#fff; transform:scale(1.15); }
-    .document.action {
-      display:grid; place-items:center; min-height:420px; padding:25px;
-      border:1px solid rgba(255,255,255,.55); border-radius:28px;
-      background:
-        radial-gradient(100% 80% at 50% 0%, rgba(255,255,255,.55), transparent 60%),
-        linear-gradient(145deg, rgba(245,252,255,.88), rgba(224,241,233,.86))!important;
-      box-shadow:0 14px 28px rgba(56,87,105,.14); text-align:center; cursor:pointer;
-      filter:none;
+
+    /* last slide like real Diia: two glass action cards */
+    .document.actions-slide {
+      display:flex; flex-direction:column; justify-content:center; gap:14px;
+      perspective:none; cursor:default; filter:none;
+      height:min(460px, 62vh);
     }
-    .document.action > div { display:flex; flex-direction:column; align-items:center; gap:8px; }
-    .document.action svg { width:42px; height:42px; stroke:currentColor; fill:none; stroke-width:1.7; }
-    .document.action strong { font-size:20px; font-weight:400; }
-    .document.action span { font-size:13px; color:#525252; }
+    .doc-action-card {
+      flex:1; min-height:110px;
+      border:1px solid rgba(255,255,255,.72);
+      border-radius:28px;
+      background:rgba(255,255,255,.58);
+      -webkit-backdrop-filter:blur(28px); backdrop-filter:blur(28px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 10px 28px rgba(40,60,90,.08);
+      display:flex; align-items:center; gap:16px;
+      padding:0 26px; text-align:left; cursor:pointer;
+      color:#111; font:inherit;
+    }
+    .doc-action-card:active { transform:scale(.985); }
+    .doc-action-card .ico {
+      width:42px; height:42px; flex:none; border-radius:50%;
+      border:1.6px solid #111; display:grid; place-items:center;
+    }
+    .doc-action-card .ico svg { width:22px; height:22px; stroke:#111; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .doc-action-card strong { font-size:18px; font-weight:600; letter-spacing:-.2px; }
 
     .feed,.menu-view { display:none; padding-top:28px; }
     .feed h1,.menu-view h1 { margin-bottom:12px; }
@@ -663,7 +686,7 @@
       .key { width:68px; height:68px; font-size:28px; }
       .greeting-text { font-size:38px; }
       .passcode-title { font-size:22px; }
-      .document { flex:0 0 calc(100% - 20px); }
+      .document { flex:0 0 calc(100% - 28px); }
     }
   </style>
 </head>
@@ -770,7 +793,7 @@
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
-                <img class="qr-image" alt="QR-код документа" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=eDocument%3A010509676%3A4008415271%3A29.01.2008"/>
+                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
                 <p>Натисніть, щоб повернути документ</p>
               </div>
             </div>
@@ -789,7 +812,7 @@
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
-                <img class="qr-image" alt="QR-код документа" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=Taxpayer%3A4008415271%3A29.01.2008"/>
+                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
                 <p>Натисніть, щоб повернути документ</p>
               </div>
             </div>
@@ -810,17 +833,20 @@
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
-                <img class="qr-image" alt="QR-код документа" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=DriverLicense%3AB%2CB1%3A21.06.2033"/>
+                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
                 <p>Натисніть, щоб повернути документ</p>
               </div>
             </div>
           </article>
-          <article class="document action">
-            <div>
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8m-4-4h8"/></svg>
+          <article class="document actions-slide">
+            <button class="doc-action-card" id="addDocBtn" type="button">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8m-4-4h8"/></svg></span>
               <strong>Додати документ</strong>
-              <span>Оберіть потрібний документ</span>
-            </div>
+            </button>
+            <button class="doc-action-card" id="reorderDocsBtn" type="button">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 8h11M7 12h11M7 16h11"/><path d="m4 10 2-2-2-2m0 12 2-2-2-2"/></svg></span>
+              <strong>Змінити порядок документів</strong>
+            </button>
           </article>
         </div>
         <div class="doc-dots" id="docDots"><i class="active"></i><i></i><i></i><i></i></div>
@@ -1045,6 +1071,17 @@
             <button class="clear-photo" id="clearPhoto" type="button">Скинути</button>
           </div>
         </div>
+        <div class="profile-field">
+          <label>QR на звороті (текст або фото)</label>
+          <input id="editQrText" type="text" placeholder="Текст для QR (необовʼязково)" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <div class="profile-photo-row">
+            <label class="file-btn">Фото QR<input id="editQrFile" type="file" accept="image/*" /></label>
+            <button class="clear-photo" id="clearQr" type="button">Скинути QR</button>
+          </div>
+          <div class="qr-box" id="qrPreview" style="width:120px;height:120px;margin:12px auto 0"><div class="qr-empty">QR</div></div>
+        </div>
         <div class="profile-actions">
           <button class="cancel" id="cancelProfile" type="button">Скасувати</button>
           <button class="save" id="saveProfile" type="button">Зберегти</button>
@@ -1172,7 +1209,7 @@
 
       function showView(v){
         servicesView.style.display=v==='services'?'block':'none';
-        docsView.style.display=v==='docs'?'block':'none';
+        docsView.style.display=v==='docs'?'flex':'none';
         feedView.style.display=v==='feed'?'block':'none';
         menuView.style.display=v==='menu'?'block':'none';
         aiView.classList.toggle('on', v==='ai');
@@ -1213,7 +1250,7 @@
         docDots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
       });
       docDots.forEach((dot,index)=>dot.addEventListener('click',()=>setDoc(index)));
-      document.querySelectorAll('.document:not(.action)').forEach(card=>{
+      document.querySelectorAll('.document:not(.actions-slide)').forEach(card=>{
         card.addEventListener('click',e=>{
           if(e.target.closest('[data-triple-edit], .more')) return;
           card.classList.toggle('flipped');
@@ -1244,8 +1281,12 @@
         };
         document.getElementById('fullDetails').onclick=()=>{ closeCurrentSheet(); fullInfo.classList.add('show'); };
         document.getElementById('changeOrder').onclick=()=>{
-          const docs=[...track.querySelectorAll('.document')];
-          track.appendChild(docs[0]);
+          const docs=[...track.querySelectorAll('.document:not(.actions-slide)')];
+          if(docs.length){
+            const actions=track.querySelector('.actions-slide');
+            track.insertBefore(docs[docs.length-1], docs[0]);
+            if(actions) track.appendChild(actions);
+          }
           closeCurrentSheet();
           notice('Порядок документів змінено');
         };
@@ -1267,7 +1308,7 @@
       }
       bindSheetActions();
 
-      document.querySelector('.document.action').onclick=()=>{
+      function openAddDocSheet(){
         docSheet.innerHTML='<div style="font-size:20px;margin:7px 8px 13px">Додати документ</div><div class="sheet-row" style="font-size:16px">Свідоцтво про народження</div><div class="sheet-row" style="font-size:16px">Картка платника податків дитини</div><div class="sheet-row" style="font-size:16px">Пенсійне посвідчення</div><div class="sheet-row" style="font-size:16px">Посвідчення ветерана</div><div class="sheet-row" style="font-size:16px">Сертифікат неодруженого</div><button class="close-sheet" id="closeSheet" type="button">Закрити</button>';
         sheet.classList.add('show');
         document.getElementById('closeSheet').onclick=closeCurrentSheet;
@@ -1275,7 +1316,16 @@
           notice('Документ буде додано в демо-версії');
           closeCurrentSheet();
         });
-      };
+      }
+      function reorderDocs(){
+        const docs=[...track.querySelectorAll('.document:not(.actions-slide)')];
+        if(docs.length>1){
+          track.insertBefore(docs[docs.length-1], docs[0]);
+          notice('Порядок документів змінено');
+        }
+      }
+      document.getElementById('addDocBtn').onclick=openAddDocSheet;
+      document.getElementById('reorderDocsBtn').onclick=reorderDocs;
 
       document.getElementById('closeInfo').onclick=()=>fullInfo.classList.remove('show');
       document.querySelectorAll('.info-card .copy').forEach(btn=>btn.addEventListener('click',event=>{
@@ -1345,16 +1395,18 @@
         aiReply(q);
       };
 
-      // —— Профіль: потрійний тап → змінити ім'я / вік / фото ——
+      // —— Профіль: потрійний тап → змінити ім'я / вік / фото / QR ——
       const DEFAULT_PROFILE={
         last:'Носенко', first:'Олександр', middle:'Володимирович',
-        birth:'29.01.2008', photo:''
+        birth:'29.01.2008', photo:'', qrText:'', qrImage:''
       };
       let profile;
       try {
         profile=Object.assign({}, DEFAULT_PROFILE, JSON.parse(localStorage.getItem('fakedia_profile')||'{}'));
       } catch(_){ profile=Object.assign({}, DEFAULT_PROFILE); }
       let draftPhoto=profile.photo||'';
+      let draftQrText=profile.qrText||'';
+      let draftQrImage=profile.qrImage||'';
 
       function initialsOf(p){
         const a=(p.last||'?')[0]||'';
@@ -1383,6 +1435,17 @@
           el.style.backgroundImage='';
         }
       }
+      function qrSrcFrom(p){
+        if(p.qrImage) return p.qrImage;
+        if(p.qrText) return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(p.qrText);
+        return '';
+      }
+      function renderQrBox(el, p){
+        if(!el) return;
+        const src=qrSrcFrom(p);
+        if(src) el.innerHTML='<img alt="QR" src="'+src+'"/>';
+        else el.innerHTML='<div class="qr-empty">QR</div>';
+      }
       function applyProfile(){
         const u=upperName(profile);
         const tc=[titleCase(profile.last), titleCase(profile.first), titleCase(profile.middle)];
@@ -1405,26 +1468,23 @@
           const F=titleCase(latinize(profile.first));
           el.textContent=L+' '+F;
         });
-        // QR refresh with new birth
-        document.querySelectorAll('.qr-image').forEach((img,i)=>{
-          const payloads=[
-            'eDocument%3A010509676%3A4008415271%3A'+encodeURIComponent(profile.birth),
-            'Taxpayer%3A4008415271%3A'+encodeURIComponent(profile.birth),
-            'DriverLicense%3AB%2CB1%3A21.06.2033'
-          ];
-          if(payloads[i]) img.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+payloads[i];
-        });
+        document.querySelectorAll('[data-qr]').forEach(el=>renderQrBox(el, profile));
       }
 
       const profileEdit=document.getElementById('profileEdit');
       const profilePreview=document.getElementById('profilePreview');
+      const qrPreview=document.getElementById('qrPreview');
       function fillEditor(){
         document.getElementById('editLast').value=profile.last;
         document.getElementById('editFirst').value=profile.first;
         document.getElementById('editMiddle').value=profile.middle;
         document.getElementById('editBirth').value=profile.birth;
+        document.getElementById('editQrText').value=profile.qrText||'';
         draftPhoto=profile.photo||'';
+        draftQrText=profile.qrText||'';
+        draftQrImage=profile.qrImage||'';
         setPhotoEl(profilePreview, {last:profile.last,first:profile.first,photo:draftPhoto});
+        renderQrBox(qrPreview, {qrText:draftQrText, qrImage:draftQrImage});
       }
       function openProfileEdit(){
         fillEditor();
@@ -1469,6 +1529,30 @@
         document.getElementById('editPhoto').value='';
         setPhotoEl(profilePreview,{last:document.getElementById('editLast').value,first:document.getElementById('editFirst').value,photo:''});
       };
+      document.getElementById('editQrText').addEventListener('input',()=>{
+        draftQrText=document.getElementById('editQrText').value||'';
+        if(draftQrText) draftQrImage='';
+        renderQrBox(qrPreview,{qrText:draftQrText, qrImage:draftQrImage});
+      });
+      document.getElementById('editQrFile').onchange=e=>{
+        const file=e.target.files&&e.target.files[0];
+        if(!file) return;
+        const reader=new FileReader();
+        reader.onload=()=>{
+          draftQrImage=String(reader.result||'');
+          draftQrText='';
+          document.getElementById('editQrText').value='';
+          renderQrBox(qrPreview,{qrText:'', qrImage:draftQrImage});
+        };
+        reader.readAsDataURL(file);
+      };
+      document.getElementById('clearQr').onclick=()=>{
+        draftQrText='';
+        draftQrImage='';
+        document.getElementById('editQrText').value='';
+        document.getElementById('editQrFile').value='';
+        renderQrBox(qrPreview,{qrText:'', qrImage:''});
+      };
       ['editLast','editFirst'].forEach(id=>{
         document.getElementById(id).addEventListener('input',()=>{
           if(draftPhoto) return;
@@ -1488,7 +1572,9 @@
           first:(document.getElementById('editFirst').value||'').trim()||DEFAULT_PROFILE.first,
           middle:(document.getElementById('editMiddle').value||'').trim()||DEFAULT_PROFILE.middle,
           birth:birth||DEFAULT_PROFILE.birth,
-          photo:draftPhoto||''
+          photo:draftPhoto||'',
+          qrText:draftQrText||'',
+          qrImage:draftQrImage||''
         };
         try { localStorage.setItem('fakedia_profile', JSON.stringify(profile)); } catch(_){}
         applyProfile();

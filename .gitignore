@@ -7,4 +7,9 @@ ios/
 *.apk
 *.aab
 *.ipa
+*.pem
+*.p8
+*.p12
+ios_distribution_private_key*
+cm-*.json
 .DS_Store

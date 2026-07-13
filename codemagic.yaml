@@ -41,14 +41,15 @@ workflows:
     max_build_duration: 90
     instance_type: mac_mini_m2
     integrations:
+      # Имя ключа должно совпадать с Team settings → Integrations → Developer Portal
       app_store_connect: AppStoreConnect
     environment:
+      groups:
+        # Группа в Codemagic UI с CERTIFICATE_PRIVATE_KEY (Secret)
+        - code_signing
       node: 22
       xcode: latest
       cocoapods: default
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: ua.demo.fakedia
       vars:
         BUNDLE_ID: ua.demo.fakedia
         XCODE_WORKSPACE: App.xcworkspace
@@ -64,6 +65,9 @@ workflows:
             npx cap add ios
           fi
           npx cap sync ios
+          # Bundle ID в Xcode-проекте
+          /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $BUNDLE_ID" ios/App/App/Info.plist || true
+          sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER = .*/PRODUCT_BUNDLE_IDENTIFIER = $BUNDLE_ID;/g" ios/App/App.xcodeproj/project.pbxproj
       - name: CocoaPods
         script: |
           cd ios/App
@@ -73,7 +77,8 @@ workflows:
           keychain initialize
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
-            --create
+            --create \
+            --certificate-key=@env:CERTIFICATE_PRIVATE_KEY
           keychain add-certificates
           xcode-project use-profiles
       - name: Build IPA
@@ -86,6 +91,9 @@ workflows:
       - ios/App/build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
     publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
       email:
         recipients:
           - jfdheha@gmail.com

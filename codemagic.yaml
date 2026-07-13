@@ -5,6 +5,7 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       node: 22
+      java: 21
       vars:
         PACKAGE_NAME: ua.demo.fakedia
     scripts:
@@ -21,9 +22,10 @@ workflows:
           npx cap sync android
       - name: Build debug APK
         script: |
+          java -version
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --stacktrace
     artifacts:
       - android/app/build/outputs/apk/**/*.apk
     publishing:

@@ -1,0 +1,10 @@
+.vercel
+node_modules/
+www/
+android/
+ios/
+.idea/
+*.apk
+*.aab
+*.ipa
+.DS_Store

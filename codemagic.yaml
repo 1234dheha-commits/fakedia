@@ -1,0 +1,92 @@
+workflows:
+  android-debug:
+    name: Fakedia Android APK
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      node: 22
+      vars:
+        PACKAGE_NAME: ua.demo.fakedia
+    scripts:
+      - name: Install npm deps
+        script: |
+          npm ci || npm install
+      - name: Prepare www + sync Capacitor Android
+        script: |
+          npm run build:web
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > android/local.properties
+          npx cap sync android
+      - name: Build debug APK
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/apk/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - jfdheha@gmail.com
+        notify:
+          success: true
+          failure: true
+
+  ios-release:
+    name: Fakedia iOS IPA
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: AppStoreConnect
+    environment:
+      node: 22
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: ua.demo.fakedia
+      vars:
+        BUNDLE_ID: ua.demo.fakedia
+        XCODE_WORKSPACE: App.xcworkspace
+        XCODE_SCHEME: App
+    scripts:
+      - name: Install npm deps
+        script: |
+          npm ci || npm install
+      - name: Prepare www + add/sync iOS
+        script: |
+          npm run build:web
+          if [ ! -d ios ]; then
+            npx cap add ios
+          fi
+          npx cap sync ios
+      - name: CocoaPods
+        script: |
+          cd ios/App
+          pod install
+      - name: Keychain + signing files
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          cd ios/App
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - ios/App/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      email:
+        recipients:
+          - jfdheha@gmail.com
+        notify:
+          success: true
+          failure: true

@@ -7,19 +7,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Дія" />
-  <meta name="theme-color" content="#c5d9e8" />
+  <meta name="theme-color" content="#5ec8c8" />
   <link rel="manifest" href="manifest.json" />
   <title>Моя держава — демо</title>
   <style>
     @import url('https://db.onlinewebfonts.com/c/a44207bfe4040f536c824dbbf82f5ed1?family=e-Ukraine+Regular');
     :root {
       --ink:#080808; --muted:#777; --card:rgba(255,255,255,.56); --line:rgba(255,255,255,.45);
-      --bg:#c5d9e8;
+      --bg:#5ec8c8;
       --safe-top:env(safe-area-inset-top, 0px);
       --safe-bottom:env(safe-area-inset-bottom, 0px);
     }
     * { box-sizing:border-box; touch-action:manipulation; }
-    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#c5d9e8; }
+    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#5ec8c8; }
     body {
       min-height:100%; min-height:100dvh; display:grid; place-items:center;
       font-family:"e-Ukraine Regular",-apple-system,BlinkMacSystemFont,"SF Pro Text",ui-sans-serif,system-ui,sans-serif;
@@ -36,7 +36,7 @@
       html {
         height: 100%;
         height: -webkit-fill-available;
-        background: #c5d9e8;
+        background: #5ec8c8;
       }
       body {
         place-items: stretch;
@@ -45,7 +45,7 @@
         min-height: 100%;
         min-height: 100dvh;
         min-height: -webkit-fill-available;
-        background: #c5d9e8;
+        background: #5ec8c8;
       }
       .phone {
         position: fixed !important;
@@ -99,18 +99,16 @@
     }
     .mesh-wrap {
       position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
-      background:linear-gradient(165deg, #b8d4e8 0%, #d4c8e8 42%, #e8e0c8 78%, #d0e4d8 100%);
+      background:#5ec8c8;
     }
     .blob {
       position:absolute; width:75%; height:75%; border-radius:50%;
-      filter:blur(64px); opacity:.9; will-change:transform, opacity;
-      mix-blend-mode:normal;
+      filter:blur(60px); opacity:.9; will-change:transform, opacity;
     }
-    /* soft Diia pastel: mint / sky / lilac / blush */
-    .b1 { background:#9fdcc8; top:-18%; left:-18%; width:85%; height:70%; animation:breathe1 12s ease-in-out infinite; }
-    .b2 { background:#8ec8e0; top:-22%; right:-18%; width:80%; height:68%; animation:breathe2 16s ease-in-out infinite; }
-    .b3 { background:#d4b0e4; top:28%; left:-20%; width:88%; height:72%; animation:breathe3 14s ease-in-out infinite; }
-    .b4 { background:#e8c4d8; bottom:-18%; right:-16%; width:82%; height:65%; animation:breathe4 18s ease-in-out infinite; }
+    .b1 { background:#7fd4b8; top:-15%; left:-15%; animation:breathe1 12s ease-in-out infinite; }
+    .b2 { background:#4fc3d9; top:-20%; right:-20%; animation:breathe2 16s ease-in-out infinite; }
+    .b3 { background:#c9a3dd; bottom:-20%; left:-15%; animation:breathe3 14s ease-in-out infinite; }
+    .b4 { background:#d9a8e0; bottom:-15%; right:-15%; animation:breathe4 18s ease-in-out infinite; }
     .b5 { display:none !important; }
     @keyframes breathe1 {
       0%,100% { transform:translate(0,0) scale(1); opacity:.85; }

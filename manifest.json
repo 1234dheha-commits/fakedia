@@ -3,7 +3,7 @@
   "short_name": "Дія",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#6ec9c4",
-  "theme_color": "#6ec9c4",
+  "background_color": "#5ec8c8",
+  "theme_color": "#5ec8c8",
   "orientation": "portrait"
 }

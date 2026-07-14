@@ -8,7 +8,7 @@
   "plugins": {
     "SplashScreen": {
       "launchAutoHide": true,
-      "backgroundColor": "#c5d9e8",
+      "backgroundColor": "#5ec8c8",
       "showSpinner": false
     },
     "StatusBar": {

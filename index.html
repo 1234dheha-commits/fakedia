@@ -443,32 +443,36 @@
     .doc-track::-webkit-scrollbar { display:none; }
     .document {
       scroll-snap-align:center; flex:0 0 calc(100% - 36px); min-height:0; height:min(460px, 62vh); padding:0; border:0;
-      background:none!important; box-shadow:none; overflow:visible; perspective:1200px; cursor:pointer; position:relative;
+      background:none!important; box-shadow:none; overflow:visible;
+      perspective:1400px; -webkit-perspective:1400px;
+      cursor:pointer; position:relative;
     }
     .doc-inner {
-      position:relative; width:100%; height:100%; transform-style:preserve-3d;
+      position:relative; width:100%; height:100%;
+      transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
       transition:transform .65s cubic-bezier(.2,.7,.2,1);
-      filter:drop-shadow(0 12px 26px rgba(40,60,90,.14));
     }
-    .document.flipped .doc-inner { transform:rotateY(180deg); }
+    .document.flipped .doc-inner { transform:rotateY(180deg); -webkit-transform:rotateY(180deg); }
     .doc-face {
       position:absolute; inset:0; padding:22px; border-radius:28px;
       border:1px solid rgba(255,255,255,.7);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 8px 24px rgba(56,87,105,.1);
-      backface-visibility:hidden; -webkit-backface-visibility:hidden; overflow:hidden;
-      -webkit-backdrop-filter:blur(28px); backdrop-filter:blur(28px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 12px 26px rgba(40,60,90,.14);
+      backface-visibility:hidden; -webkit-backface-visibility:hidden;
+      overflow:hidden;
     }
     .doc-front {
-      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,245,252,.62) 45%, rgba(235,245,255,.7));
+      transform:rotateY(0deg); -webkit-transform:rotateY(0deg);
+      background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,245,252,.88) 45%, rgba(235,245,255,.9));
     }
     .tax .doc-front {
-      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(230,250,240,.65) 50%, rgba(230,240,255,.7));
+      background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(230,250,240,.88) 50%, rgba(230,240,255,.9));
     }
     .driver .doc-front {
-      background:linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,245,225,.65) 50%, rgba(235,238,255,.7));
+      background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,245,225,.88) 50%, rgba(235,238,255,.9));
     }
     .doc-back {
-      background:rgba(255,255,255,.88); transform:rotateY(180deg);
+      background:rgba(255,255,255,.96);
+      transform:rotateY(180deg); -webkit-transform:rotateY(180deg);
       display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px;
     }
     .doc-back p { margin:0; font-size:13px; color:#555; text-align:center; padding:0 16px; }
@@ -782,14 +786,14 @@
               <div class="doc-face doc-front">
                 <h2>Паспорт громадянина України</h2>
                 <div class="identity">
-                  <div class="photo" data-triple-edit>НО</div>
+                  <div class="photo" data-triple-edit>AO</div>
                   <div class="fields">
-                    <div><b>Дата народження:</b><span data-birth>29.01.2008</span></div>
-                    <div><b>Номер:</b>010509676</div>
+                    <div><b>Дата народження:</b><span data-birth>15.03.2005</span></div>
+                    <div><b>Номер:</b><span data-passport>000000000</span></div>
                   </div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
-                <div class="owner" data-triple-edit data-owner>НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
+                <div class="owner" data-triple-edit data-owner>OVESHIKOVA<br>ANYA<br>OLEGOVNA</div>
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
@@ -804,11 +808,11 @@
                 <h2>Картка платника податків</h2>
                 <div class="fields">
                   <div><b>РНОКПП</b></div>
-                  <div data-name-block>Носенко<br>Олександр<br>Володимирович</div>
-                  <div><b>Дата народження:</b><span data-birth>29.01.2008</span></div>
+                  <div data-name-block>Oveshikova<br>Anya<br>Olegovna</div>
+                  <div><b>Дата народження:</b><span data-birth>15.03.2005</span></div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
-                <div class="doc-number">4008415271</div>
+                <div class="doc-number" data-tax>0000000000</div>
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
@@ -822,14 +826,14 @@
               <div class="doc-face doc-front">
                 <h2>Посвідчення водія</h2>
                 <div class="identity">
-                  <div class="photo" data-triple-edit>НО</div>
+                  <div class="photo" data-triple-edit>AO</div>
                   <div class="fields">
                     <div><b>Категорії:</b>B, B1</div>
                     <div><b>Дійсне до:</b>21.06.2033</div>
                   </div>
                 </div>
                 <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
-                <div class="owner" data-triple-edit data-owner>НОСЕНКО<br>ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
+                <div class="owner" data-triple-edit data-owner>OVESHIKOVA<br>ANYA<br>OLEGOVNA</div>
                 <button class="more" type="button">•••</button>
               </div>
               <div class="doc-face doc-back">
@@ -853,7 +857,7 @@
       </main>
 
       <main class="feed" id="feedView">
-        <h1 data-triple-edit data-feed-hello>Привіт, Олександр</h1>
+        <h1 data-triple-edit data-feed-hello>Привіт, Anya</h1>
         <h2>Нові повідомлення</h2>
         <article class="message-card">
           <small>Опитування</small>
@@ -958,19 +962,19 @@
         </div>
         <div class="info-strip">Документ діє під час воєнного стану</div>
         <article class="info-card">
-          <div class="info-name" data-info-name>НОСЕНКО ОЛЕКСАНДР<br>ВОЛОДИМИРОВИЧ</div>
-          <div class="latin" data-latin>Nosenko Oleksandr</div>
+          <div class="info-name" data-info-name>OVESHIKOVA ANYA<br>OLEGOVNA</div>
+          <div class="latin" data-latin>Oveshikova Anya</div>
           <div class="info-ident">
-            <div class="info-photo" data-triple-edit>НО</div>
-            <div class="info-birth">Дата<br>народження:<span>Date of birth</span><span data-birth>29.01.2008</span></div>
+            <div class="info-photo" data-triple-edit>AO</div>
+            <div class="info-birth">Дата<br>народження:<span>Date of birth</span><span data-birth>15.03.2005</span></div>
           </div>
         </article>
         <article class="info-card info-lines">
           <div>Стать:<span>Sex</span></div>
-          <div>Ч<span>M</span></div>
+          <div>Ж<span>F</span></div>
           <div>РНОКПП (ІПН):<span></span></div>
-          <div>4008415271 <button class="copy" type="button" aria-label="Копіювати"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></button></div>
-          <div class="info-wide">Документ, що посвідчує особу:<br><br>Паспорт громадянина України<br>010509676</div>
+          <div><span data-tax>0000000000</span> <button class="copy" type="button" aria-label="Копіювати"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></button></div>
+          <div class="info-wide">Документ, що посвідчує особу:<br><br>Паспорт громадянина України<br><span data-passport>000000000</span></div>
         </article>
         <article class="info-card info-address">Місце проживання зазначене в банку:<br><br>Україна, місто Київ, узвіз Вознесенський, буд 16, кв 6</article>
       </section>
@@ -1330,8 +1334,8 @@
       document.getElementById('closeInfo').onclick=()=>fullInfo.classList.remove('show');
       document.querySelectorAll('.info-card .copy').forEach(btn=>btn.addEventListener('click',event=>{
         event.stopPropagation();
-        const value='4008415271';
-        if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(value).catch(()=>{});
+        const value=(document.querySelector('[data-tax]')||{}).textContent||'';
+        if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(value.trim()).catch(()=>{});
         notice('Скопійовано');
       }));
 
@@ -1396,14 +1400,28 @@
       };
 
       // —— Профіль: потрійний тап → змінити ім'я / вік / фото / QR ——
+      function randDigits(n){
+        let s='';
+        for(let i=0;i<n;i++) s+=Math.floor(Math.random()*10);
+        return s;
+      }
       const DEFAULT_PROFILE={
-        last:'Носенко', first:'Олександр', middle:'Володимирович',
-        birth:'29.01.2008', photo:'', qrText:'', qrImage:''
+        last:'Oveshikova', first:'Anya', middle:'Olegovna',
+        birth:'15.03.2005', photo:'', qrText:'', qrImage:'',
+        passport:'', tax:''
       };
+      const PROFILE_KEY='fakedia_profile_v3';
       let profile;
       try {
-        profile=Object.assign({}, DEFAULT_PROFILE, JSON.parse(localStorage.getItem('fakedia_profile')||'{}'));
+        const raw=JSON.parse(localStorage.getItem(PROFILE_KEY)||'null');
+        profile=Object.assign({}, DEFAULT_PROFILE, raw||{});
+        if(!raw || /носенко|nosenko/i.test([profile.last,profile.first,profile.middle].join(' '))){
+          profile=Object.assign({}, DEFAULT_PROFILE);
+        }
       } catch(_){ profile=Object.assign({}, DEFAULT_PROFILE); }
+      if(!profile.passport) profile.passport=randDigits(9);
+      if(!profile.tax) profile.tax=randDigits(10);
+      try { localStorage.setItem(PROFILE_KEY, JSON.stringify(profile)); } catch(_){}
       let draftPhoto=profile.photo||'';
       let draftQrText=profile.qrText||'';
       let draftQrImage=profile.qrImage||'';
@@ -1419,7 +1437,7 @@
       function titleCase(s){
         s=(s||'').trim();
         if(!s) return '';
-        return s.charAt(0).toUpperCase()+s.slice(1).toLowerCase();
+        return s.charAt(0).toUpperCase()+s.slice(1);
       }
       function latinize(s){
         const map={а:'a',б:'b',в:'v',г:'h',ґ:'g',д:'d',е:'e',є:'ye',ж:'zh',з:'z',и:'y',і:'i',ї:'yi',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'kh',ц:'ts',ч:'ch',ш:'sh',щ:'shch',ь:'',ю:'yu',я:'ya',"'":'','’':''};
@@ -1456,6 +1474,8 @@
           el.innerHTML=tc[0]+'<br>'+tc[1]+'<br>'+tc[2];
         });
         document.querySelectorAll('[data-birth]').forEach(el=>{ el.textContent=profile.birth; });
+        document.querySelectorAll('[data-passport]').forEach(el=>{ el.textContent=profile.passport; });
+        document.querySelectorAll('[data-tax]').forEach(el=>{ el.textContent=profile.tax; });
         document.querySelectorAll('.photo, .info-photo').forEach(el=>setPhotoEl(el, profile));
         document.querySelectorAll('[data-feed-hello]').forEach(el=>{
           el.textContent='Привіт, '+titleCase(profile.first);
@@ -1464,8 +1484,8 @@
           el.innerHTML=u[0]+' '+u[1]+'<br>'+u[2];
         });
         document.querySelectorAll('[data-latin]').forEach(el=>{
-          const L=titleCase(latinize(profile.last));
-          const F=titleCase(latinize(profile.first));
+          const L=titleCase(latinize(profile.last)||profile.last);
+          const F=titleCase(latinize(profile.first)||profile.first);
           el.textContent=L+' '+F;
         });
         document.querySelectorAll('[data-qr]').forEach(el=>renderQrBox(el, profile));
@@ -1574,9 +1594,11 @@
           birth:birth||DEFAULT_PROFILE.birth,
           photo:draftPhoto||'',
           qrText:draftQrText||'',
-          qrImage:draftQrImage||''
+          qrImage:draftQrImage||'',
+          passport:profile.passport||randDigits(9),
+          tax:profile.tax||randDigits(10)
         };
-        try { localStorage.setItem('fakedia_profile', JSON.stringify(profile)); } catch(_){}
+        try { localStorage.setItem(PROFILE_KEY, JSON.stringify(profile)); } catch(_){}
         applyProfile();
         closeProfileEdit();
         notice('Дані оновлено');

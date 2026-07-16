@@ -65,10 +65,16 @@ workflows:
           /usr/libexec/PlistBuddy -c "Add :ITSAppUsesNonExemptEncryption bool false" ios/App/App/Info.plist 2>/dev/null || \
             /usr/libexec/PlistBuddy -c "Set :ITSAppUsesNonExemptEncryption false" ios/App/App/Info.plist
           sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER = .*/PRODUCT_BUNDLE_IDENTIFIER = $BUNDLE_ID;/g" ios/App/App.xcodeproj/project.pbxproj
-          # bump build number for TestFlight
+          # bump marketing + build so TestFlight shows Update
           BUILD_NUM=$(date +%Y%m%d%H%M)
-          agvtool new-version -all "$BUILD_NUM" || \
-            sed -i '' "s/CURRENT_PROJECT_VERSION = [0-9]*;/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
+          MARKETING="1.0.$BUILD_NUM"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $MARKETING" ios/App/App/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUM" ios/App/App/Info.plist || true
+          sed -i '' "s/MARKETING_VERSION = [^;]*/MARKETING_VERSION = $MARKETING;/g" ios/App/App.xcodeproj/project.pbxproj
+          sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
+          agvtool new-marketing-version "$MARKETING" 2>/dev/null || true
+          agvtool new-version -all "$BUILD_NUM" || true
+          cd ios/App && agvtool new-marketing-version "$MARKETING" 2>/dev/null || true
           cd ios/App && agvtool new-version -all "$BUILD_NUM" 2>/dev/null || true
       - name: CocoaPods
         script: |

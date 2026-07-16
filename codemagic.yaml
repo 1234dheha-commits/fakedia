@@ -70,12 +70,10 @@ workflows:
           MARKETING="1.0.$BUILD_NUM"
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $MARKETING" ios/App/App/Info.plist || true
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUM" ios/App/App/Info.plist || true
-          sed -i '' "s/MARKETING_VERSION = [^;]*/MARKETING_VERSION = $MARKETING;/g" ios/App/App.xcodeproj/project.pbxproj
-          sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
-          agvtool new-marketing-version "$MARKETING" 2>/dev/null || true
-          agvtool new-version -all "$BUILD_NUM" || true
-          cd ios/App && agvtool new-marketing-version "$MARKETING" 2>/dev/null || true
-          cd ios/App && agvtool new-version -all "$BUILD_NUM" 2>/dev/null || true
+          sed -i '' "s/MARKETING_VERSION = [^;]*;/MARKETING_VERSION = $MARKETING;/g" ios/App/App.xcodeproj/project.pbxproj
+          sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*;/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
+          (cd ios/App && agvtool new-marketing-version "$MARKETING" 2>/dev/null) || true
+          (cd ios/App && agvtool new-version -all "$BUILD_NUM" 2>/dev/null) || true
       - name: CocoaPods
         script: |
           cd ios/App
@@ -106,6 +104,7 @@ workflows:
         submit_to_testflight: true
         beta_groups:
           - External
+          - аппр
       email:
         recipients:
           - jfdheha@gmail.com

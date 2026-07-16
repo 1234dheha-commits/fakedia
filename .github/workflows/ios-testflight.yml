@@ -1,4 +1,4 @@
-﻿name: iOS TestFlight
+name: iOS TestFlight
 
 on:
   workflow_dispatch:
@@ -39,8 +39,8 @@ jobs:
           echo "BUILD_NUM=$BUILD_NUM" >> "$GITHUB_ENV"
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $MARKETING" ios/App/App/Info.plist || true
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUM" ios/App/App/Info.plist || true
-          sed -i '' "s/MARKETING_VERSION = [^;]*/MARKETING_VERSION = $MARKETING;/g" ios/App/App.xcodeproj/project.pbxproj
-          sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
+          sed -i '' "s/MARKETING_VERSION = [^;]*;/MARKETING_VERSION = $MARKETING;/g" ios/App/App.xcodeproj/project.pbxproj
+          sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*;/CURRENT_PROJECT_VERSION = $BUILD_NUM;/g" ios/App/App.xcodeproj/project.pbxproj
           echo "Marketing $MARKETING build $BUILD_NUM"
 
       - name: CocoaPods

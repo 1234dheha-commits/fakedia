@@ -729,6 +729,22 @@
       .passcode-title { font-size:22px; }
       .document { flex:0 0 calc(100% - 28px); }
     }
+
+    /* Several entrance animations (helloIn, tileIn, passIn, keyIn) only reach their
+       centered/full-opacity state once the animation finishes. If the OS/WebView
+       skips or freezes animations (Reduce Motion, background-tab throttling on
+       first load), those elements are stuck at their shrunk/offset/invisible
+       starting frame instead — this forces the resting, centered state directly. */
+    @media (prefers-reduced-motion: reduce) {
+      .blob, .wave, .splash-hello, .greeting-text, .bottom-bar,
+      .passcode-title, .pin-dots, .key, .forgot, .ai-ticker span {
+        animation: none !important;
+      }
+      .splash-hello.show, .lock.ready .greeting-text {
+        opacity: 1; transform: none;
+      }
+      .ai-ticker span { padding-left: 0; }
+    }
   </style>
 </head>
 <body>

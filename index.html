@@ -7,19 +7,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Дія" />
-  <meta name="theme-color" content="#5ec8c8" />
+  <meta name="theme-color" content="#b8dff0" />
   <link rel="manifest" href="manifest.json" />
   <title>Моя держава — демо</title>
   <style>
     @import url('https://db.onlinewebfonts.com/c/a44207bfe4040f536c824dbbf82f5ed1?family=e-Ukraine+Regular');
     :root {
-      --ink:#080808; --muted:#777; --card:rgba(255,255,255,.56); --line:rgba(255,255,255,.45);
-      --bg:#5ec8c8;
+      --ink:#080808; --muted:#777; --card:rgba(255,255,255,.42); --line:rgba(255,255,255,.35);
+      --bg:#b8dff0;
       --safe-top:env(safe-area-inset-top, 0px);
       --safe-bottom:env(safe-area-inset-bottom, 0px);
     }
     * { box-sizing:border-box; touch-action:manipulation; }
-    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#5ec8c8; }
+    html,body { margin:0; overflow:hidden; height:100%; overscroll-behavior:none; background:#b8dff0; }
     body {
       min-height:100%; min-height:100dvh; display:grid; place-items:center;
       font-family:"e-Ukraine Regular",-apple-system,BlinkMacSystemFont,"SF Pro Text",ui-sans-serif,system-ui,sans-serif;
@@ -36,7 +36,7 @@
       html {
         height: 100%;
         height: -webkit-fill-available;
-        background: #5ec8c8;
+        background: #b8dff0;
       }
       body {
         place-items: stretch;
@@ -45,7 +45,7 @@
         min-height: 100%;
         min-height: 100dvh;
         min-height: -webkit-fill-available;
-        background: #5ec8c8;
+        background: #b8dff0;
       }
       .phone {
         position: fixed !important;
@@ -82,7 +82,7 @@
     }
     .ios-bottom-bleed { display: none; }
     html.native-app, html.native-app body {
-      background: #5ec8c8;
+      background: #b8dff0;
     }
     html.native-app .phone {
       position: fixed !important;
@@ -99,16 +99,16 @@
     }
     .mesh-wrap {
       position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
-      background:#5ec8c8;
+      background:linear-gradient(180deg, #b8dff0 0%, #d4ead8 55%, #e8f4dc 100%);
     }
     .blob {
       position:absolute; width:75%; height:75%; border-radius:50%;
-      filter:blur(60px); opacity:.9; will-change:transform, opacity;
+      filter:blur(70px); opacity:.75; will-change:transform, opacity;
     }
-    .b1 { background:#7fd4b8; top:-15%; left:-15%; animation:breathe1 12s ease-in-out infinite; }
-    .b2 { background:#4fc3d9; top:-20%; right:-20%; animation:breathe2 16s ease-in-out infinite; }
-    .b3 { background:#c9a3dd; bottom:-20%; left:-15%; animation:breathe3 14s ease-in-out infinite; }
-    .b4 { background:#d9a8e0; bottom:-15%; right:-15%; animation:breathe4 18s ease-in-out infinite; }
+    .b1 { background:#9fd4f0; top:-15%; left:-15%; animation:breathe1 12s ease-in-out infinite; }
+    .b2 { background:#8ecde8; top:-20%; right:-20%; animation:breathe2 16s ease-in-out infinite; }
+    .b3 { background:#c8e8b8; bottom:-20%; left:-15%; animation:breathe3 14s ease-in-out infinite; }
+    .b4 { background:#d9edc4; bottom:-15%; right:-15%; animation:breathe4 18s ease-in-out infinite; }
     .b5 { display:none !important; }
     @keyframes breathe1 {
       0%,100% { transform:translate(0,0) scale(1); opacity:.85; }
@@ -155,8 +155,9 @@
       to { transform:translateX(140px); opacity:0; }
     }
     .splash-hello {
-      position:absolute; font-size:44px; font-weight:700; color:#1c1c1e;
-      letter-spacing:-.5px; opacity:0; transform:translateY(10px);
+      position:absolute; font-size:46px; font-weight:700; color:#1c1c1e;
+      letter-spacing:-1px; opacity:0; transform:translateY(10px);
+      display:flex; align-items:center; gap:10px;
     }
     .splash-hello.show { animation:helloIn .5s cubic-bezier(.22,.8,.24,1) forwards; }
     @keyframes helloIn {
@@ -187,19 +188,20 @@
     }
     .greeting {
       flex:1; display:flex; align-items:center; justify-content:center;
-      padding:0 24px;
+      padding:0 24px 14vh;
     }
     .greeting-text {
-      margin:0; font-size:44px; font-weight:700; color:#1c1c1e; letter-spacing:-.5px;
-      text-align:center;
+      margin:0; font-size:46px; font-weight:700; color:#1c1c1e; letter-spacing:-1px;
+      text-align:center; display:flex; align-items:center; gap:10px;
       opacity:0; transform:translateY(10px);
     }
+    .greeting-text .wave-emoji { font-size:42px; line-height:1; }
     .lock.ready .greeting-text {
       animation:helloIn .5s cubic-bezier(.22,.8,.24,1) .08s forwards;
     }
     .bottom-bar {
-      display:flex; justify-content:center; align-items:center; gap:12px;
-      padding-bottom:calc(32px + var(--safe-bottom));
+      display:flex; justify-content:center; align-items:center; gap:14px;
+      padding-bottom:calc(28px + var(--safe-bottom));
       animation:tileIn .65s cubic-bezier(.22,.8,.24,1) .12s both;
     }
     @keyframes tileIn {
@@ -213,9 +215,19 @@
     }
     .pill:active { transform:scale(.94); }
     .pill.pulse { animation:tilePulse .42s cubic-bezier(.22,.8,.24,1); }
+    .diia-logo {
+      width:54px; height:54px; border-radius:15px; border:0;
+      background:#1c1c1e; color:#fff; font-size:16px; font-weight:700;
+      letter-spacing:-.3px; cursor:pointer; padding:0;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .15s;
+    }
+    .diia-logo:active { transform:scale(.94); }
+    .diia-logo.pulse { animation:tilePulse .42s cubic-bezier(.22,.8,.24,1); }
     .trident-btn {
-      width:52px; height:52px; border-radius:16px; border:2px solid #1c1c1e;
-      background:transparent; display:flex; align-items:center; justify-content:center;
+      width:54px; height:54px; border-radius:15px;
+      border:1.5px solid rgba(28,28,30,.18);
+      background:rgba(255,255,255,.88); display:flex; align-items:center; justify-content:center;
       box-sizing:border-box; cursor:pointer; padding:0; transition:transform .15s;
     }
     .trident-btn:active { transform:scale(.94); }
@@ -228,8 +240,8 @@
 
     .passcode {
       position:absolute; inset:0; z-index:3;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      box-sizing:border-box; padding:calc(20px + var(--safe-top)) 20px calc(12px + var(--safe-bottom));
+      display:flex; flex-direction:column; align-items:center;
+      box-sizing:border-box; padding:calc(52px + var(--safe-top)) 24px calc(18px + var(--safe-bottom));
       opacity:0; visibility:hidden; pointer-events:none;
       transform:translateY(28px) scale(.97);
       transition:opacity .42s cubic-bezier(.22,.8,.24,1), transform .5s cubic-bezier(.22,.8,.24,1), visibility 0s linear .42s;
@@ -240,18 +252,19 @@
       transition:opacity .42s cubic-bezier(.22,.8,.24,1), transform .5s cubic-bezier(.22,.8,.24,1), visibility 0s;
     }
     .passcode-title {
-      margin:0 0 28px; text-align:center; font-size:26px; font-weight:600; color:#1c1c1e;
+      margin:0 0 24px; text-align:center; font-size:24px; font-weight:500; color:#1c1c1e;
     }
     .pin-dots {
-      display:flex; justify-content:center; gap:14px; margin-bottom:36px;
+      display:flex; justify-content:center; gap:16px; margin-bottom:42px;
     }
     .pin-dots i, .pin-dots .dot {
-      width:12px; height:12px; border-radius:50%;
-      background:rgba(28,28,30,.35);
+      width:11px; height:11px; border-radius:50%;
+      background:rgba(255,255,255,.92);
       transition:background .15s ease, transform .15s ease;
     }
     .pin-dots i.filled, .pin-dots .dot.filled {
-      background:#1c1c1e; transform:scale(1.05);
+      background:#fff; transform:scale(1.08);
+      box-shadow:0 0 0 1px rgba(28,28,30,.08);
     }
     .pin-dots.shake { animation:shake .4s ease; }
     @keyframes shake {
@@ -269,8 +282,8 @@
     }
     .keypad {
       flex:none; display:grid; grid-template-columns:repeat(3,1fr);
-      gap:18px 0; justify-items:center; align-content:center;
-      max-width:320px; margin:0 auto; width:100%;
+      gap:20px 0; justify-items:center; align-content:center;
+      max-width:330px; margin:0 auto; width:100%;
     }
     .passcode.show .key {
       animation:keyIn .44s cubic-bezier(.22,.8,.24,1) both;
@@ -295,19 +308,19 @@
       to { opacity:1; transform:scale(1); }
     }
     .key {
-      width:74px; height:74px; border-radius:50%; border:0;
-      background:rgba(255,255,255,.9); color:#1c1c1e;
-      font-size:30px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      width:78px; height:78px; border-radius:50%; border:0;
+      background:rgba(255,255,255,.96); color:#1c1c1e;
+      font-size:32px; font-weight:400; cursor:pointer; display:flex; align-items:center; justify-content:center;
       transition:transform .08s ease, background .08s ease;
     }
-    .key:active { transform:scale(.94); background:rgba(255,255,255,1); }
+    .key:active { transform:scale(.94); background:#fff; }
     .key.ghost { background:transparent; }
-    .key.ghost:active { background:rgba(255,255,255,.25); }
+    .key.ghost:active { background:rgba(255,255,255,.18); }
     .key svg { display:block; }
     .forgot {
-      text-align:center; font-size:15px; font-weight:500; color:#1c1c1e;
-      margin-top:28px; margin-bottom:0;
-      border:0; background:none; cursor:pointer; padding:10px;
+      text-align:center; font-size:15px; font-weight:400; color:#1c1c1e;
+      margin-top:auto; margin-bottom:0; padding:14px 10px 0;
+      border:0; background:none; cursor:pointer;
     }
 
     /* —— App —— */
@@ -324,37 +337,48 @@
       transform:scale(1);
       transition:opacity .5s cubic-bezier(.22,.8,.24,1), transform .55s cubic-bezier(.22,.8,.24,1), visibility 0s;
     }
-    main { position:relative; z-index:1; height:100%; overflow:auto; padding:28px 22px 110px; scrollbar-width:none; overscroll-behavior:contain; }
+    main { position:relative; z-index:1; height:100%; overflow:auto; padding:18px 20px 110px; scrollbar-width:none; overscroll-behavior:contain; }
     main::-webkit-scrollbar { display:none; }
-    h1 { font-size:32px; letter-spacing:-1.4px; line-height:1; margin:0 0 20px; font-weight:400; text-align:left; }
+    h1 { font-size:38px; letter-spacing:-1.8px; line-height:1.02; margin:0 0 18px; font-weight:600; text-align:left; }
     .search {
-      height:52px; border-radius:27px; padding:0 18px; background:rgba(255,255,255,.92);
-      display:flex; align-items:center; gap:11px; color:#989898; font-size:16px; margin-bottom:20px;
-      box-shadow:0 8px 25px rgba(80,112,141,.08);
+      height:50px; border-radius:25px; padding:0 16px; background:rgba(255,255,255,.78);
+      display:flex; align-items:center; gap:10px; color:#9a9a9a; font-size:16px; margin-bottom:18px;
+      box-shadow:none; border:1px solid rgba(255,255,255,.55); cursor:pointer;
     }
-    .search svg { width:23px; height:23px; stroke:#aaa; fill:none; stroke-width:2; }
-    .services { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .search svg { width:22px; height:22px; stroke:#aaa; fill:none; stroke-width:2; }
+    .services { display:grid; grid-template-columns:1fr 1fr; gap:11px; }
     .service {
-      text-align:left; min-height:165px; border:1px solid var(--line); border-radius:23px;
-      background:var(--card); padding:21px; display:flex; flex-direction:column; justify-content:space-between;
-      cursor:pointer; transition:transform .18s, background .18s; box-shadow:inset 0 1px rgba(255,255,255,.3);
+      text-align:left; min-height:158px; border:1px solid var(--line); border-radius:22px;
+      background:var(--card); padding:20px 18px; display:flex; flex-direction:column; justify-content:space-between;
+      cursor:pointer; transition:transform .18s, background .18s;
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      box-shadow:inset 0 1px rgba(255,255,255,.35);
     }
-    .service:hover { background:rgba(255,255,255,.68); transform:translateY(-2px); }
+    .service:hover { background:rgba(255,255,255,.58); transform:translateY(-2px); }
     .service:active { transform:scale(.97); }
-    .icon { width:47px; height:47px; border-radius:50%; background:#000; color:#fff; display:grid; place-items:center; }
-    .icon svg { width:23px; height:23px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-    .service span { font-weight:400; font-size:15px; line-height:1.16; letter-spacing:-.25px; }
+    .icon { width:48px; height:48px; border-radius:50%; background:#000; color:#fff; display:grid; place-items:center; }
+    .icon svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2.1; stroke-linecap:round; stroke-linejoin:round; }
+    .service span { font-weight:400; font-size:15px; line-height:1.18; letter-spacing:-.3px; }
     .tabbar {
       z-index:4; position:absolute; left:0; right:0; bottom:0;
-      padding:8px 6px calc(10px + env(safe-area-inset-bottom, 0px));
+      padding:10px 8px calc(12px + env(safe-area-inset-bottom, 0px));
       background:#000; display:flex; justify-content:space-around; align-items:flex-start; color:#fff;
     }
     .tabbar::after { display:none; }
     .tab {
-      background:none; border:0; padding:0 2px; min-width:54px; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:4px; font-size:9px; font-weight:400; cursor:pointer; opacity:.94;
+      background:none; border:0; padding:0 2px; min-width:58px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:5px; font-size:10px; font-weight:400; cursor:pointer; opacity:.94;
     }
-    .tab svg { width:27px; height:27px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .tab-ico {
+      width:36px; height:36px; border-radius:12px;
+      display:grid; place-items:center;
+    }
+    .tab.active .tab-ico { background:#fff; color:#000; }
+    .tab[data-view="docs"].active .tab-ico,
+    .tab[data-view="feed"].active .tab-ico,
+    .tab[data-view="ai"].active .tab-ico { border-radius:12px; }
+    .tab[data-view="menu"].active .tab-ico { border-radius:50%; }
+    .tab svg { width:23px; height:23px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
     .tab.active { color:#fff; } .tab:not(.active) { color:#d9d9d9; }
     .notice {
       position:absolute; z-index:7; left:50%; bottom:calc(88px + env(safe-area-inset-bottom, 0px)); transform:translate(-50%,20px);
@@ -372,20 +396,24 @@
     }
     .ai-view.on { display:flex; }
     .ai-top {
-      display:flex; align-items:center; justify-content:space-between;
-      padding:8px 18px 8px; flex:none;
+      display:grid; grid-template-columns:40px 1fr 40px; align-items:center;
+      padding:10px 18px 6px; flex:none;
+    }
+    .ai-brand {
+      text-align:center; font-size:17px; font-weight:600; letter-spacing:-.3px;
     }
     .ai-top button {
       width:40px; height:40px; border:0; background:none; padding:0;
       display:grid; place-items:center; cursor:pointer;
     }
+    .ai-top button:last-child { justify-self:end; }
     .ai-top svg { width:24px; height:24px; stroke:#111; fill:none; stroke-width:1.8; stroke-linecap:round; }
     .ai-ticker {
       overflow:hidden; white-space:nowrap;
-      background:rgba(255,255,255,.35);
-      padding:8px 0; font-size:13px; color:#222;
-      border-top:1px solid rgba(255,255,255,.4);
-      border-bottom:1px solid rgba(255,255,255,.4);
+      background:rgba(255,255,255,.42);
+      padding:9px 0; font-size:13px; color:#222;
+      border-top:1px solid rgba(255,255,255,.35);
+      border-bottom:1px solid rgba(255,255,255,.35);
     }
     .ai-ticker span {
       display:inline-block;
@@ -443,15 +471,17 @@
     }
     .ai-chip:active { transform:scale(.98); }
     .ai-input-wrap {
-      padding:8px 20px 12px; width:100%; box-sizing:border-box;
+      padding:10px 20px 14px; width:100%; box-sizing:border-box; flex:none;
+      background:linear-gradient(180deg, rgba(184,223,240,0) 0%, rgba(184,223,240,.55) 35%);
     }
     .ai-input {
       display:flex; align-items:center; gap:10px;
-      background:#fff; border-radius:26px; padding:10px 14px;
-      box-shadow:0 8px 24px rgba(40,60,80,.12);
+      background:rgba(255,255,255,.96); border-radius:28px; padding:11px 14px;
+      box-shadow:0 6px 20px rgba(40,60,80,.1);
+      border:1px solid rgba(255,255,255,.65);
     }
     .ai-input .spark-btn {
-      width:36px; height:36px; border:0; border-radius:12px;
+      width:38px; height:38px; border:0; border-radius:13px;
       background:#111; color:#fff; display:grid; place-items:center; flex:none; cursor:pointer;
     }
     .ai-input .spark-btn svg { width:18px; height:18px; stroke:#fff; fill:none; stroke-width:1.7; }
@@ -463,10 +493,13 @@
 
     .doc {
       display:none; flex-direction:column;
-      padding:12px 0 calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+      padding:18px 0 calc(96px + env(safe-area-inset-bottom, 0px)) !important;
       overflow:hidden; height:100%;
     }
-    .doc h1 { margin:0 22px 8px; flex:none; }
+    .doc h1 {
+      margin:0 20px 12px; flex:none;
+      font-size:38px; font-weight:600; letter-spacing:-1.8px; line-height:1.02;
+    }
     .doc-track {
       flex:1; min-height:0;
       display:flex; align-items:center; gap:14px;
@@ -476,7 +509,7 @@
     }
     .doc-track::-webkit-scrollbar { display:none; }
     .document {
-      scroll-snap-align:center; flex:0 0 calc(100% - 36px); min-height:0; height:min(460px, 62vh); padding:0; border:0;
+      scroll-snap-align:center; flex:0 0 calc(100% - 52px); min-height:0; height:min(480px, 64vh); padding:0; border:0;
       background:none!important; box-shadow:none; overflow:visible;
       perspective:1400px; -webkit-perspective:1400px;
       cursor:pointer; position:relative;
@@ -492,11 +525,12 @@
     }
     .document.flipping { pointer-events:none; }
     .doc-face {
-      position:absolute; inset:0; padding:22px; border-radius:28px;
-      border:1px solid rgba(255,255,255,.7);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 12px 26px rgba(40,60,90,.14);
+      position:absolute; inset:0; padding:22px; border-radius:30px;
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 14px 30px rgba(40,60,90,.12);
       backface-visibility:hidden; -webkit-backface-visibility:hidden;
       overflow:hidden;
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
     }
     .doc-front {
       transform:rotateY(0deg) translateZ(1px); -webkit-transform:rotateY(0deg) translateZ(1px);
@@ -509,15 +543,18 @@
       background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,245,225,.88) 50%, rgba(235,238,255,.9));
     }
     .doc-back {
-      background:rgba(255,255,255,.96);
+      background:linear-gradient(160deg, rgba(255,255,255,.98), rgba(245,250,255,.96));
       transform:rotateY(180deg) translateZ(1px); -webkit-transform:rotateY(180deg) translateZ(1px);
-      display:flex; align-items:center; justify-content:center;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
     }
+    .qr-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; }
+    .qr-hint { margin:0; font-size:15px; color:#333; text-align:center; line-height:1.35; max-width:240px; }
+    .qr-sub { margin:0; font-size:12px; color:#777; text-align:center; }
     .qr-box {
-      width:220px; height:220px; border-radius:16px; background:#fff;
+      width:230px; height:230px; border-radius:18px; background:#fff;
       display:grid; place-items:center; overflow:hidden;
-      box-shadow:0 4px 18px rgba(0,0,0,.06);
-      border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 6px 22px rgba(0,0,0,.08);
+      border:1px solid rgba(0,0,0,.05);
     }
     .qr-box img { width:100%; height:100%; object-fit:contain; display:block; image-rendering:pixelated; }
     .qr-empty {
@@ -528,10 +565,10 @@
         #fafafa;
       color:#bbb; font-size:15px; font-weight:600; letter-spacing:.4px;
     }
-    .document h2 { margin:0 0 18px; font-size:22px; line-height:1.12; letter-spacing:-.7px; max-width:260px; font-weight:400; }
+    .document h2 { margin:0 0 20px; font-size:23px; line-height:1.1; letter-spacing:-.8px; max-width:270px; font-weight:400; }
     .identity { display:flex; gap:16px; align-items:start; }
     .photo {
-      width:108px; height:136px; flex:none; background:linear-gradient(150deg,#d5b69b,#44352e);
+      width:112px; height:140px; flex:none; background:linear-gradient(150deg,#d5b69b,#44352e);
       border-radius:18px; display:grid; place-items:center; color:white; font-size:28px; font-weight:400;
       overflow:hidden; background-size:cover; background-position:center;
     }
@@ -539,25 +576,34 @@
     .fields { font-size:14px; line-height:1.35; }
     .fields b { display:block; margin:0 0 2px; font-weight:400; }
     .fields div { margin-bottom:14px; }
-    .owner { position:absolute; left:22px; bottom:28px; font-size:19px; line-height:1.1; font-weight:400; letter-spacing:-.45px; max-width:76%; }
+    .owner { position:absolute; left:22px; bottom:30px; font-size:20px; line-height:1.08; font-weight:400; letter-spacing:-.5px; max-width:76%; text-transform:uppercase; }
     .doc-strip {
-      position:absolute; left:0; right:0; bottom:100px; padding:7px 12px;
+      position:absolute; left:0; right:0; bottom:102px; padding:8px 0;
       background:linear-gradient(90deg,#a9e99e,#9adbed); white-space:nowrap; font-size:11px; font-weight:400; overflow:hidden;
     }
-    .doc-number { position:absolute; left:22px; bottom:16px; font-size:17px; font-weight:400; letter-spacing:.2px; }
+    .doc-strip span {
+      display:inline-block; padding-left:100%;
+      animation:docMarquee 22s linear infinite;
+    }
+    @keyframes docMarquee {
+      0% { transform:translateX(0); }
+      100% { transform:translateX(-100%); }
+    }
+    .doc-number { position:absolute; left:22px; bottom:18px; font-size:18px; font-weight:400; letter-spacing:.2px; }
     .more {
-      position:absolute; width:33px; height:33px; right:16px; bottom:16px; border:0; border-radius:50%;
+      position:absolute; width:36px; height:36px; right:16px; bottom:16px; border:0; border-radius:50%;
       background:#000; color:#fff; font-size:15px; letter-spacing:0; padding:0; display:grid; place-items:center; line-height:1; overflow:hidden;
     }
-    .doc-dots { display:flex; justify-content:center; gap:8px; margin:6px 0 4px; flex:none; }
-    .doc-dots i { width:8px; height:8px; background:rgba(255,255,255,.52); border-radius:50%; transition:.2s; }
-    .doc-dots i.active { background:#fff; transform:scale(1.15); }
+    .more svg { width:18px; height:18px; fill:currentColor; stroke:none; }
+    .doc-dots { display:flex; justify-content:center; gap:7px; margin:10px 0 6px; flex:none; }
+    .doc-dots i { width:7px; height:7px; background:rgba(255,255,255,.45); border-radius:50%; transition:.2s; }
+    .doc-dots i.active { background:#fff; transform:scale(1.2); }
 
     /* last slide like real Diia: two glass action cards */
     .document.actions-slide {
       display:flex; flex-direction:column; justify-content:center; gap:14px;
       perspective:none; cursor:default; filter:none;
-      height:min(460px, 62vh);
+      height:min(480px, 64vh);
     }
     .doc-action-card {
       flex:1; min-height:110px;
@@ -578,22 +624,26 @@
     .doc-action-card .ico svg { width:22px; height:22px; stroke:#111; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
     .doc-action-card strong { font-size:18px; font-weight:600; letter-spacing:-.2px; }
 
-    .feed,.menu-view { display:none; padding-top:28px; }
-    .feed h1,.menu-view h1 { margin-bottom:12px; }
-    .feed h2 { font-size:18px; font-weight:400; margin:35px 0 17px; }
+    .feed,.menu-view { display:none; padding-top:18px; }
+    .feed h1,.menu-view h1 { margin-bottom:10px; }
+    .feed h2 { font-size:17px; font-weight:400; margin:22px 0 14px; color:#222; }
     .message-card,.resilience,.menu-card {
       border:1px solid rgba(255,255,255,.52); background:rgba(255,255,255,.72); border-radius:25px;
       box-shadow:0 10px 25px rgba(66,100,126,.08);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     }
-    .message-card { padding:22px; }
-    .message-card small { font-size:13px; color:#555; }
-    .message-card p { margin:19px 0 0; font-size:18px; line-height:1.2; }
-    .feed-dots { display:flex; justify-content:center; gap:8px; padding:16px; }
-    .feed-dots i { width:8px; height:8px; border-radius:50%; background:#000; }
-    .feed-dots i + i { background:rgba(255,255,255,.68); }
-    .resilience { padding:25px 24px 23px; background:rgba(236,247,255,.61); }
-    .resilience h3 { margin:0 0 18px; font-size:30px; font-weight:400; }
-    .resilience p { margin:0; font-size:15px; line-height:1.25; max-width:285px; }
+    .feed-carousel { position:relative; }
+    .feed-track { display:flex; overflow:hidden; border-radius:25px; transition:transform .35s ease; }
+    .feed-track .message-card { flex:0 0 100%; margin:0; border-radius:25px; }
+    .message-card { padding:22px 22px 24px; }
+    .message-card small { font-size:13px; color:#666; font-weight:400; }
+    .message-card p { margin:16px 0 0; font-size:19px; line-height:1.22; letter-spacing:-.3px; }
+    .feed-dots { display:flex; justify-content:center; gap:7px; padding:14px 0 6px; }
+    .feed-dots i { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); transition:.2s; }
+    .feed-dots i.active { background:#111; transform:scale(1.15); }
+    .resilience { padding:24px 22px 22px; background:rgba(255,255,255,.58); }
+    .resilience h3 { margin:0 0 16px; font-size:32px; font-weight:400; letter-spacing:-.8px; }
+    .resilience p { margin:0; font-size:15px; line-height:1.28; max-width:290px; color:#222; }
     .resilience-foot { display:flex; align-items:center; justify-content:space-between; margin-top:22px; }
     .badges { display:flex; gap:5px; }
     .badges span {
@@ -608,18 +658,24 @@
       display:grid; place-items:center; cursor:pointer;
     }
     .round-btn svg { width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-    .quick-links { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; text-align:center; margin:42px 0; }
-    .quick-links div { font-size:13px; line-height:1.13; }
+    .quick-links { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; text-align:center; margin:36px 0 24px; }
+    .quick-links div { font-size:13px; line-height:1.15; letter-spacing:-.2px; }
     .quick-links .ql-icon {
-      width:60px; height:60px; margin:0 auto 10px; border-radius:18px;
-      display:grid; place-items:center; background:#000; color:#fff;
+      width:62px; height:62px; margin:0 auto 10px; border-radius:18px;
+      display:grid; place-items:center; background:rgba(255,255,255,.72); color:#111;
+      border:1px solid rgba(255,255,255,.55);
+      box-shadow:0 8px 20px rgba(66,100,126,.06);
     }
-    .quick-links svg { width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .quick-links svg { width:26px; height:26px; stroke:#111; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 
-    .menu-sub { color:#515a62; margin:0 0 32px; font-size:16px; }
-    .menu-card { padding:0 20px; margin-bottom:18px; }
+    .menu-sub { color:#666; margin:0 0 28px; font-size:15px; font-weight:400; }
+    .menu-card {
+      padding:0 20px; margin-bottom:16px;
+      border:1px solid rgba(255,255,255,.52); background:rgba(255,255,255,.72); border-radius:25px;
+      box-shadow:0 10px 25px rgba(66,100,126,.08);
+    }
     .menu-row {
-      display:flex; align-items:center; gap:16px; min-height:78px; font-size:18px;
+      display:flex; align-items:center; gap:16px; min-height:72px; font-size:17px;
       border-bottom:1px solid #e1e5e7; position:relative; cursor:pointer;
     }
     .menu-row:last-child { border:0; }
@@ -632,6 +688,15 @@
     .alert-dot {
       width:11px; height:11px; background:#df5353; border-radius:50%;
       position:absolute; left:34px; top:22px;
+    }
+    .menu-footer { margin-top:10px; padding-bottom:12px; text-align:center; }
+    .logout-btn {
+      width:100%; height:56px; border:0; border-radius:28px;
+      background:#111; color:#fff; font-size:17px; font-weight:400; cursor:pointer; margin-bottom:20px;
+    }
+    .privacy-link {
+      display:inline-block; color:#111; font-size:15px; text-decoration:underline;
+      margin-bottom:10px; cursor:pointer; line-height:1.35;
     }
 
     .sheet-overlay {
@@ -650,29 +715,47 @@
     .close-sheet { width:100%; height:52px; margin-top:12px; border:0; border-radius:26px; background:#000; color:#fff; font-size:17px; cursor:pointer; }
     .full-info {
       position:absolute; inset:0; z-index:12; display:none; overflow:auto;
-      padding:44px 20px 105px; background:#eef2f3; color:#090909; scrollbar-width:none;
+      padding:calc(12px + var(--safe-top)) 20px 105px; background:#eef2f3; color:#090909; scrollbar-width:none;
     }
     .full-info.show { display:block; }
     .full-info::-webkit-scrollbar { display:none; }
-    .info-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-    .info-top h2 { margin:0; font-size:28px; font-weight:400; }
-    .back-info { border:0; background:none; font-size:28px; line-height:1; cursor:pointer; padding:4px 8px; }
-    .info-strip { margin:0 -20px 22px; padding:8px 18px; background:#a8e69f; white-space:nowrap; overflow:hidden; font-size:12px; }
-    .info-card { background:#fff; border-radius:25px; padding:23px; margin-bottom:17px; }
-    .info-name { font-size:25px; line-height:1.05; margin-bottom:17px; }
-    .latin { font-size:16px; margin-bottom:22px; }
-    .info-ident { display:flex; gap:18px; }
+    .info-top {
+      display:grid; grid-template-columns:40px 1fr 40px; align-items:center;
+      margin-bottom:14px;
+    }
+    .info-top h2 { margin:0; font-size:28px; font-weight:400; letter-spacing:-.5px; text-align:center; grid-column:2; }
+    .back-info {
+      grid-column:3; justify-self:end;
+      border:0; background:none; font-size:30px; line-height:1; cursor:pointer; padding:4px 0 4px 8px; color:#111;
+    }
+    .info-strip {
+      margin:0 -20px 22px; padding:8px 0; background:linear-gradient(90deg,#a8e69f,#9adbed);
+      white-space:nowrap; overflow:hidden; font-size:12px;
+    }
+    .info-strip span {
+      display:inline-block; padding-left:100%;
+      animation:docMarquee 28s linear infinite;
+    }
+    .info-card { background:#fff; border-radius:25px; padding:22px 23px; margin-bottom:14px; box-shadow:0 2px 10px rgba(40,60,80,.04); }
+    .info-name { font-size:26px; line-height:1.08; margin-bottom:10px; font-weight:700; letter-spacing:-.2px; }
+    .latin { font-size:17px; margin-bottom:20px; color:#111; }
+    .info-ident { display:flex; gap:18px; align-items:flex-start; }
     .info-photo {
-      width:128px; height:172px; flex:none; border-radius:20px;
+      width:124px; height:168px; flex:none; border-radius:18px;
       background:linear-gradient(150deg,#b79778,#493932); display:grid; place-items:center; color:#fff; font-size:38px;
       overflow:hidden; background-size:cover; background-position:center;
     }
     .info-photo img { width:100%; height:100%; object-fit:cover; display:block; }
-    .info-birth { font-size:16px; line-height:1.25; }
-    .info-birth span { display:block; color:#777; margin:8px 0; }
-    .info-lines { display:grid; grid-template-columns:1fr 1fr; row-gap:25px; font-size:15px; }
-    .info-lines span { display:block; color:#777; margin-top:4px; }
-    .info-wide { grid-column:1/-1; }
+    .info-birth { font-size:15px; line-height:1.3; padding-top:4px; }
+    .info-birth .birth-label { color:#111; margin-bottom:12px; }
+    .info-birth .birth-val { font-size:24px; font-weight:400; letter-spacing:-.4px; color:#111; }
+    .info-lines { display:grid; grid-template-columns:1fr auto; row-gap:22px; column-gap:12px; font-size:15px; align-items:start; }
+    .info-lines > div:nth-child(odd) { color:#111; }
+    .info-lines > div:nth-child(even) { text-align:right; font-size:16px; }
+    .info-lines span { display:block; color:#777; margin-top:4px; font-size:13px; }
+    .info-lines .tax-row { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
+    .info-wide { grid-column:1/-1; line-height:1.45; }
+    .info-wide .doc-label { color:#111; margin-bottom:10px; }
     .copy {
       float:right; border:0; background:none; padding:0; cursor:pointer; display:inline-grid; place-items:center;
     }
@@ -699,11 +782,11 @@
     .profile-preview img { width:100%; height:100%; object-fit:cover; }
     .profile-field { margin-bottom:12px; }
     .profile-field label { display:block; font-size:12px; color:#777; margin-bottom:6px; }
-    .profile-field input {
+    .profile-field input, .profile-field select {
       width:100%; height:48px; border-radius:14px; border:1px solid #e2e6ea; padding:0 14px;
       font:inherit; font-size:16px; background:#f7f8fa; outline:none;
     }
-    .profile-field input:focus { border-color:#9adbed; background:#fff; }
+    .profile-field input:focus, .profile-field select:focus { border-color:#9adbed; background:#fff; }
     .profile-photo-row { display:flex; gap:10px; }
     .profile-photo-row label.file-btn {
       flex:1; height:48px; border-radius:14px; background:#111; color:#fff;
@@ -722,10 +805,11 @@
 
     @media (max-width:390px) {
       main { padding-left:18px; padding-right:18px; }
-      h1 { font-size:30px; }
-      .service { min-height:150px; padding:18px; }
-      .key { width:68px; height:68px; font-size:28px; }
-      .greeting-text { font-size:38px; }
+      h1 { font-size:34px; }
+      .service { min-height:148px; padding:18px 16px; }
+      .key { width:72px; height:72px; font-size:30px; }
+      .greeting-text { font-size:40px; }
+      .greeting-text .wave-emoji { font-size:36px; }
       .passcode-title { font-size:22px; }
       .document { flex:0 0 calc(100% - 28px); }
     }
@@ -737,13 +821,14 @@
        starting frame instead — this forces the resting, centered state directly. */
     @media (prefers-reduced-motion: reduce) {
       .blob, .wave, .splash-hello, .greeting-text, .bottom-bar,
-      .passcode-title, .pin-dots, .key, .forgot, .ai-ticker span {
+      .passcode-title, .pin-dots, .key, .forgot, .ai-ticker span,
+      .doc-strip span, .info-strip span {
         animation: none !important;
       }
       .splash-hello.show, .lock.ready .greeting-text {
         opacity: 1; transform: none;
       }
-      .ai-ticker span { padding-left: 0; }
+      .ai-ticker span, .doc-strip span, .info-strip span { padding-left: 0; }
     }
   </style>
 </head>
@@ -761,7 +846,7 @@
     <div class="splash" id="splash">
       <div class="splash-stage">
         <span class="wave" id="wave">👋</span>
-        <span class="splash-hello" id="splashHello">Привіт</span>
+        <span class="splash-hello" id="splashHello"><span>Привіт</span> 👋</span>
       </div>
     </div>
 
@@ -769,10 +854,10 @@
     <div class="lock" id="lockScreen">
       <div class="greet" id="greetView">
         <div class="greeting">
-          <div class="greeting-text">Привіт</div>
+          <div class="greeting-text"><span>Привіт</span><span class="wave-emoji">👋</span></div>
         </div>
         <div class="bottom-bar">
-          <button class="pill" id="openDiia" type="button">Дія</button>
+          <button class="diia-logo" id="openDiia" type="button">дія</button>
           <button class="trident-btn" id="openTryzub" type="button" aria-label="Герб">
             <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
               <path d="M13 2C13 2 10 6 10 10C10 12 11 13 11 15C11 16.5 10 17 9 17.5C7.5 18 6 17 6 15C6 13 7 12 7 10C7 6 4 3 4 3L2 5C2 5 5 8 5 11C5 13.5 3 14.5 3 17C3 19.5 5.5 21 7.5 20C9 19.3 9.5 18 9.5 18L9.5 27L13 27L13 20L13 27L16.5 27L16.5 18C16.5 18 17 19.3 18.5 20C20.5 21 23 19.5 23 17C23 14.5 21 13.5 21 11C21 8 24 5 24 5L22 3C22 3 19 6 19 10C19 12 20 13 20 15C20 17 18.5 18 17 17.5C16 17 15 16.5 15 15C15 13 16 12 16 10C16 6 13 2 13 2Z" fill="#1c1c1e"/>
@@ -845,12 +930,16 @@
                     <div><b>Номер:</b><span data-passport>000000000</span></div>
                   </div>
                 </div>
-                <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
+                <div class="doc-strip"><span>Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено Дією&nbsp; • &nbsp;</span></div>
                 <div class="owner" data-triple-edit data-owner>OVESHIKOVA<br>ANYA<br>OLEGOVNA</div>
-                <button class="more" type="button">•••</button>
+                <button class="more" type="button" aria-label="Більше"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
               </div>
               <div class="doc-face doc-back">
-                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                <div class="qr-wrap">
+                  <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                  <p class="qr-hint">Код для перевірки документа</p>
+                  <p class="qr-sub">Натисніть на картку, щоб повернутися</p>
+                </div>
               </div>
             </div>
           </article>
@@ -863,12 +952,16 @@
                   <div data-name-block>Oveshikova<br>Anya<br>Olegovna</div>
                   <div><b>Дата народження:</b><span data-birth>15.03.2005</span></div>
                 </div>
-                <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
+                <div class="doc-strip"><span>Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено Дією&nbsp; • &nbsp;</span></div>
                 <div class="doc-number" data-tax>0000000000</div>
-                <button class="more" type="button">•••</button>
+                <button class="more" type="button" aria-label="Більше"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
               </div>
               <div class="doc-face doc-back">
-                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                <div class="qr-wrap">
+                  <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                  <p class="qr-hint">Код для перевірки документа</p>
+                  <p class="qr-sub">Натисніть на картку, щоб повернутися</p>
+                </div>
               </div>
             </div>
           </article>
@@ -883,12 +976,16 @@
                     <div><b>Дійсне до:</b>21.06.2033</div>
                   </div>
                 </div>
-                <div class="doc-strip">Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено</div>
+                <div class="doc-strip"><span>Документ оновлено сьогодні&nbsp; • &nbsp;Перевірено Дією&nbsp; • &nbsp;</span></div>
                 <div class="owner" data-triple-edit data-owner>OVESHIKOVA<br>ANYA<br>OLEGOVNA</div>
-                <button class="more" type="button">•••</button>
+                <button class="more" type="button" aria-label="Більше"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
               </div>
               <div class="doc-face doc-back">
-                <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                <div class="qr-wrap">
+                  <div class="qr-box" data-qr><div class="qr-empty">QR</div></div>
+                  <p class="qr-hint">Код для перевірки документа</p>
+                  <p class="qr-sub">Натисніть на картку, щоб повернутися</p>
+                </div>
               </div>
             </div>
           </article>
@@ -909,11 +1006,19 @@
       <main class="feed" id="feedView">
         <h1 data-triple-edit data-feed-hello>Привіт, Anya</h1>
         <h2>Нові повідомлення</h2>
-        <article class="message-card">
-          <small>Опитування</small>
-          <p>Оберіть десятого фіналіста Нацвідбору, який позмагається за перемогу</p>
-        </article>
-        <div class="feed-dots"><i></i><i></i></div>
+        <div class="feed-carousel">
+          <div class="feed-track" id="feedTrack">
+            <article class="message-card">
+              <small>Опитування</small>
+              <p>Оберіть десятого фіналіста Нацвідбору, який позмагається за перемогу</p>
+            </article>
+            <article class="message-card">
+              <small>Оновлення</small>
+              <p>Документи в Дії тепер доступні офлайн — перевірте свої в застосунку</p>
+            </article>
+          </div>
+        </div>
+        <div class="feed-dots" id="feedDots"><i class="active"></i><i></i></div>
         <article class="resilience">
           <h3>Незламність</h3>
           <p>Мапа укриттів, Пунктів незламності та відділень Power Banking. Заява про відсутній зв’язок.</p>
@@ -946,19 +1051,8 @@
 
       <main class="menu-view" id="menuView">
         <h1>Меню</h1>
-        <p class="menu-sub">Версія Дії: 4.34.2.2678</p>
+        <p class="menu-sub">Версія Дії: 4.34.3.2702</p>
         <section class="menu-card">
-          <div class="menu-row" data-label="Повідомлення">
-            <span class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg></span>
-            <span>Повідомлення</span>
-            <b class="alert-dot"></b>
-          </div>
-        </section>
-        <section class="menu-card">
-          <div class="menu-row" data-label="Дія.Підпис">
-            <span class="mi"><svg viewBox="0 0 24 24"><path d="M7 17c4-8 8-10 13-11"/><path d="M4 20h7"/><circle cx="7" cy="17" r="1.4" fill="#111" stroke="none"/></svg></span>
-            <span>Дія.Підпис</span>
-          </div>
           <div class="menu-row" data-label="Історія підписань">
             <span class="mi"><svg viewBox="0 0 24 24"><path d="M6 3h10l3 3v15H6z"/><path d="M9 10h7M9 14h5"/></svg></span>
             <span>Історія підписань</span>
@@ -992,6 +1086,10 @@
             <span>Питання та відповіді</span>
           </div>
         </section>
+        <div class="menu-footer">
+          <button class="logout-btn" id="logoutBtn" type="button">Вийти</button>
+          <span class="privacy-link" id="privacyLink" role="button" tabindex="0">Повідомлення про обробку персональних даних</span>
+        </div>
       </main>
 
       <div class="sheet-overlay" id="sheetOverlay">
@@ -1010,23 +1108,26 @@
           <h2>еДокумент</h2>
           <button class="back-info" id="closeInfo" type="button">×</button>
         </div>
-        <div class="info-strip">Документ діє під час воєнного стану</div>
+        <div class="info-strip"><span>Документ діє під час воєнного стану • Ой у лузі червона калина похилилася, чогось наша славна Укра • </span></div>
         <article class="info-card">
           <div class="info-name" data-info-name>OVESHIKOVA ANYA<br>OLEGOVNA</div>
           <div class="latin" data-latin>Oveshikova Anya</div>
           <div class="info-ident">
             <div class="info-photo" data-triple-edit>AO</div>
-            <div class="info-birth">Дата<br>народження:<span>Date of birth</span><span data-birth>15.03.2005</span></div>
+            <div class="info-birth">
+              <div class="birth-label">Дата народження: / Date of birth</div>
+              <div class="birth-val" data-birth>15.03.2005</div>
+            </div>
           </div>
         </article>
         <article class="info-card info-lines">
           <div>Стать:<span>Sex</span></div>
-          <div>Ж<span>F</span></div>
-          <div>РНОКПП (ІПН):<span></span></div>
-          <div><span data-tax>0000000000</span> <button class="copy" type="button" aria-label="Копіювати"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></button></div>
-          <div class="info-wide">Документ, що посвідчує особу:<br><br>Паспорт громадянина України<br><span data-passport>000000000</span></div>
+          <div><span data-sex-ua>Ж</span><span data-sex-en>F</span></div>
+          <div>РНОКПП (ІПН):</div>
+          <div class="tax-row"><span data-tax>0000000000</span><button class="copy" type="button" aria-label="Копіювати"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></button></div>
+          <div class="info-wide"><div class="doc-label">Документ, що посвідчує особу:</div>Паспорт громадянина України <span data-passport>000000000</span></div>
         </article>
-        <article class="info-card info-address">Місце проживання зазначене в банку:<br><br>Україна, місто Київ, узвіз Вознесенський, буд 16, кв 6</article>
+        <article class="info-card info-address" data-triple-edit>Місце проживання зазначене в банку:<br><br><span data-address>Україна, місто Київ, узвіз Вознесенський, буд 16, кв 6</span></article>
       </section>
 
       <div class="ai-view" id="aiView">
@@ -1034,6 +1135,7 @@
           <button type="button" aria-label="Меню" id="aiMenuBtn">
             <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
+          <div class="ai-brand">Дія.AI</div>
           <button type="button" aria-label="Пошук" id="aiSearchBtn">
             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           </button>
@@ -1074,23 +1176,23 @@
 
       <nav class="tabbar">
         <button class="tab" data-view="feed" type="button" aria-label="Стрічка">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="15" height="17" rx="2"/><path d="M7 8h7M7 13h7M20 8v13H8"/></svg>
+          <span class="tab-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="15" height="17" rx="2"/><path d="M7 8h7M7 13h7M20 8v13H8"/></svg></span>
           <span>Стрічка</span>
         </button>
         <button class="tab" data-view="docs" type="button" aria-label="Документи">
-          <svg viewBox="0 0 24 24"><path d="M6 3h10l3 3v15H6z"/><path d="M9 10h7M9 14h7"/></svg>
+          <span class="tab-ico"><svg viewBox="0 0 24 24"><path d="M6 3h10l3 3v15H6z"/><path d="M9 10h7M9 14h7"/></svg></span>
           <span>Документи</span>
         </button>
         <button class="tab" data-view="ai" type="button" aria-label="Дія AI">
-          <svg viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+          <span class="tab-ico"><svg viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span>
           <span>Дія.AI</span>
         </button>
         <button class="tab active" data-view="services" type="button" aria-label="Сервіси">
-          <svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7z"/></svg>
+          <span class="tab-ico"><svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7z"/></svg></span>
           <span>Сервіси</span>
         </button>
         <button class="tab" data-view="menu" type="button" aria-label="Меню">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.2-6 8-6s6.5 2 8 6"/></svg>
+          <span class="tab-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.2-6 8-6s6.5 2 8 6"/></svg></span>
           <span>Меню</span>
         </button>
       </nav>
@@ -1100,7 +1202,7 @@
     <div class="profile-edit" id="profileEdit" aria-hidden="true">
       <div class="profile-panel" role="dialog" aria-label="Редагувати профіль">
         <h3>Редагувати дані</h3>
-        <p class="profile-hint">Потрійний тап по фото / імені · лише для демо</p>
+        <p class="profile-hint">Потрійний тап по фото / імені / адресі · лише для демо</p>
         <div class="profile-preview" id="profilePreview">НО</div>
         <div class="profile-field">
           <label>Прізвище</label>
@@ -1117,6 +1219,17 @@
         <div class="profile-field">
           <label>Дата народження (ДД.ММ.РРРР)</label>
           <input id="editBirth" type="text" inputmode="numeric" placeholder="29.01.2008" autocomplete="off" />
+        </div>
+        <div class="profile-field">
+          <label>Стать</label>
+          <select id="editSex">
+            <option value="F">Ж / F</option>
+            <option value="M">Ч / M</option>
+          </select>
+        </div>
+        <div class="profile-field">
+          <label>Адреса (місце проживання)</label>
+          <input id="editAddress" type="text" placeholder="Україна, місто Київ, ..." autocomplete="off" />
         </div>
         <div class="profile-field">
           <label>Фото</label>
@@ -1269,18 +1382,35 @@
         aiView.classList.toggle('on', v==='ai');
       }
 
-      const data=[['Допомога армії','bell'],['Незламність','bolt'],['Дія.Картка','card'],['Військові облігації','tryzub'],['Лінія дронів','flag'],['Національний кешбек','bars'],['Чатбот еВорог','target'],['єВідновлення','tools'],['єЧерга','ticket'],['Спорт','dumbbell']];
+      const data=[
+        ['Допомога армії','helmet'],['Незламність','bolt'],['Дія.Картка','card'],['Військові облігації','tryzub'],
+        ['Лінія дронів','drone'],['Національний кешбек','barcode'],['Чатбот єВорог','target'],['єВідновлення','tools'],
+        ['єЧерга','doc'],['Спорт','dumbbell'],
+        ['Допомога від держави','heart'],['Шлюб онлайн','ring'],['Послуги для ВПО','box'],['Підприємцю','briefcase'],
+        ['Допомога по безробіттю','coins'],['Судові послуги','gavel'],['Виконавчі провадження','alert'],['Довідки та витяги','clipboard'],
+        ['Розваги','gamepad'],['Повернення вкладів','refund']
+      ];
       const icons={
-        bell:'<path d="M7 17h10l-1-2V10a4 4 0 0 0-8 0v5z"/><path d="M10 20h4"/>',
+        helmet:'<path d="M12 4C8 4 5 6 5 9v2h14V9c0-3-3-5-7-5z"/><path d="M4 11v1a8 8 0 0 0 16 0v-1"/>',
         bolt:'<path d="m13 2-8 11h6l-1 9 9-13h-6z"/>',
         card:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>',
         tryzub:'<path d="M12 3v15M8 7v7l4 4 4-4V7M5 10l3 3m11-3-3 3"/>',
-        flag:'<path d="M6 3v18M6 5h10l-2 4 2 4H6"/>',
-        bars:'<path d="M4 5v14M8 5v14M12 5v14M16 5v14M20 5v14"/>',
+        drone:'<path d="M12 12 8 9M12 12l4-3M8 9V5M16 9V5M12 12v3M8 15l4 3 4-3"/>',
+        barcode:'<path d="M4 6v12M7 6v12M10 6v12M14 6v12M17 6v12M20 6v12"/>',
         target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/>',
         tools:'<path d="m14 6 4-4 2 2-4 4M6 14l-4 4 2 2 4-4M8 8l8 8"/>',
-        ticket:'<path d="M4 5h16v14H4z"/><path d="M8 9h8m-8 4h5"/>',
-        dumbbell:'<path d="M3 10v4m3-6v8m3-4h6m3-4v8m3-6v4"/>'
+        doc:'<path d="M6 3h10l3 3v15H6z"/><path d="M9 14l2 2 4-4"/>',
+        dumbbell:'<path d="M3 10v4m3-6v8m3-4h6m3-4v8m3-6v4"/>',
+        heart:'<path d="M8 14c-1.5-2-2-3.5-2-5a2.5 2.5 0 0 1 4.5-1.5A2.5 2.5 0 0 1 15 9c0 1.5-.5 3-2 5l-1 1-1-1z"/><path d="M7 12c-1-1.5-1.5-3-1.5-4.5"/><path d="M17 12c1-1.5 1.5-3 1.5-4.5"/>',
+        ring:'<circle cx="12" cy="13" r="5"/><path d="M10 8l2-3 2 3"/>',
+        box:'<path d="M4 8l8-4 8 4v10l-8 4-8-4z"/><path d="M12 4v18"/>',
+        briefcase:'<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+        coins:'<ellipse cx="8" cy="11" rx="3" ry="2"/><ellipse cx="16" cy="15" rx="3" ry="2"/><path d="M10 11l4 4"/>',
+        gavel:'<path d="M5 19h14M8 19l4-8 3 3-4 5"/><path d="M14 8l3-3 2 2-3 3"/>',
+        alert:'<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>',
+        clipboard:'<rect x="7" y="5" width="10" height="14" rx="2"/><path d="M9 5h6v2H9z"/><path d="M9 11h6M9 14h4"/>',
+        gamepad:'<rect x="4" y="10" width="16" height="8" rx="4"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="15" r="1" fill="currentColor" stroke="none"/>',
+        refund:'<rect x="3" y="7" width="18" height="11" rx="2"/><path d="M3 11h18"/><path d="M9 15l-2 2 2 2"/>'
       };
       document.getElementById('grid').innerHTML=data.map(([name,icon])=>
         `<button class="service" data-name="${name}" type="button"><i class="icon"><svg viewBox="0 0 24 24">${icons[icon]}</svg></i><span>${name}</span></button>`
@@ -1310,6 +1440,16 @@
           if(card.classList.contains('flipping')) return;
           card.classList.add('flipping');
           card.classList.toggle('flipped');
+          setTimeout(()=>card.classList.remove('flipping'), 680);
+        });
+      });
+      document.querySelectorAll('.doc-back').forEach(back=>{
+        back.addEventListener('click',e=>{
+          e.stopPropagation();
+          const card=back.closest('.document');
+          if(!card || card.classList.contains('flipping') || !card.classList.contains('flipped')) return;
+          card.classList.add('flipping');
+          card.classList.remove('flipped');
           setTimeout(()=>card.classList.remove('flipping'), 680);
         });
       });
@@ -1406,6 +1546,31 @@
           notice('«'+label+'» — розділ у демо-версії');
         }
       }));
+      document.getElementById('logoutBtn').onclick=()=>notice('Вихід — у демо-версії');
+      document.getElementById('privacyLink').onclick=()=>notice('Повідомлення про обробку персональних даних — у демо');
+
+      const feedTrack=document.getElementById('feedTrack');
+      const feedDots=[...document.querySelectorAll('#feedDots i')];
+      function setFeedSlide(index){
+        if(feedTrack) feedTrack.style.transform='translateX(-'+(index*100)+'%)';
+        feedDots.forEach((dot,i)=>dot.classList.toggle('active',i===index));
+      }
+      feedDots.forEach((dot,i)=>dot.addEventListener('click',()=>setFeedSlide(i)));
+      let feedTouchX=0;
+      feedTrack?.addEventListener('touchstart',e=>{ feedTouchX=e.changedTouches[0].clientX; },{passive:true});
+      feedTrack?.addEventListener('touchend',e=>{
+        const dx=e.changedTouches[0].clientX-feedTouchX;
+        const cur=feedDots.findIndex(d=>d.classList.contains('active'));
+        if(dx<-40 && cur<feedDots.length-1) setFeedSlide(cur+1);
+        else if(dx>40 && cur>0) setFeedSlide(cur-1);
+      },{passive:true});
+
+      document.querySelector('#servicesView .search')?.addEventListener('click',()=>notice('Пошук — у демо-версії'));
+      document.querySelectorAll('.quick-links > div').forEach(el=>{
+        el.style.cursor='pointer';
+        el.onclick=()=>notice('«'+el.textContent.trim().replace(/\s+/g,' ')+'» — у демо');
+      });
+      document.querySelector('.resilience')?.addEventListener('click',()=>notice('Незламність — у демо'));
 
       document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
         document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -1464,10 +1629,12 @@
       }
       const DEFAULT_PROFILE={
         last:'Oveshikova', first:'Anya', middle:'Olegovna',
-        birth:'15.03.2005', photo:'', qrText:'', qrImage:'',
+        birth:'15.03.2005', sex:'F',
+        address:'Україна, місто Київ, узвіз Вознесенський, буд 16, кв 6',
+        photo:'', qrText:'', qrImage:'',
         passport:'', tax:''
       };
-      const PROFILE_KEY='fakedia_profile_v3';
+      const PROFILE_KEY='fakedia_profile_v4';
       let profile;
       try {
         const raw=JSON.parse(localStorage.getItem(PROFILE_KEY)||'null');
@@ -1512,8 +1679,8 @@
       }
       function qrSrcFrom(p){
         if(p.qrImage) return p.qrImage;
-        if(p.qrText) return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(p.qrText);
-        return '';
+        const text=p.qrText || ('https://diia.gov.ua/verify/'+(p.passport||p.tax||'demo'));
+        return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(text);
       }
       function renderQrBox(el, p){
         if(!el) return;
@@ -1546,6 +1713,12 @@
           el.textContent=L+' '+F;
         });
         document.querySelectorAll('[data-qr]').forEach(el=>renderQrBox(el, profile));
+        document.querySelectorAll('[data-address]').forEach(el=>{
+          el.textContent=profile.address||DEFAULT_PROFILE.address;
+        });
+        const sex=profile.sex==='M'?{ua:'Ч',en:'M'}:{ua:'Ж',en:'F'};
+        document.querySelectorAll('[data-sex-ua]').forEach(el=>{ el.textContent=sex.ua; });
+        document.querySelectorAll('[data-sex-en]').forEach(el=>{ el.textContent=sex.en; });
       }
 
       const profileEdit=document.getElementById('profileEdit');
@@ -1556,6 +1729,8 @@
         document.getElementById('editFirst').value=profile.first;
         document.getElementById('editMiddle').value=profile.middle;
         document.getElementById('editBirth').value=profile.birth;
+        document.getElementById('editSex').value=profile.sex==='M'?'M':'F';
+        document.getElementById('editAddress').value=profile.address||DEFAULT_PROFILE.address;
         document.getElementById('editQrText').value=profile.qrText||'';
         draftPhoto=profile.photo||'';
         draftQrText=profile.qrText||'';
@@ -1649,6 +1824,8 @@
           first:(document.getElementById('editFirst').value||'').trim()||DEFAULT_PROFILE.first,
           middle:(document.getElementById('editMiddle').value||'').trim()||DEFAULT_PROFILE.middle,
           birth:birth||DEFAULT_PROFILE.birth,
+          sex:document.getElementById('editSex').value==='M'?'M':'F',
+          address:(document.getElementById('editAddress').value||'').trim()||DEFAULT_PROFILE.address,
           photo:draftPhoto||'',
           qrText:draftQrText||'',
           qrImage:draftQrImage||'',
